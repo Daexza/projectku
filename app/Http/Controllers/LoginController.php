@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User; // Import model User
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash; // Untuk verifikasi password
+use Illuminate\Support\Facades\Session; // Untuk menyimpan session pengguna
 
 class LoginController extends Controller
 {
@@ -21,8 +23,15 @@ class LoginController extends Controller
             'password' => 'required|min:6',
         ]);
 
-        // Cek kredensial pengguna
-        if (Auth::attempt($request->only('email', 'password'))) {
+        // Ambil data pengguna dari database berdasarkan email
+        $user = User::where('email', $request->email)->first(); // Menggunakan model User
+
+        if ($user && Hash::check($request->password, $user->password)) {
+            // Simpan informasi pengguna di session
+            Session::put('user_id', $user->user_id);
+            Session::put('full_name', $user->full_name);
+            Session::put('role', $user->role);
+
             return redirect()->route('dashboard')->with('success', 'Login berhasil!');
         }
 
@@ -33,7 +42,7 @@ class LoginController extends Controller
     // Logout
     public function logout()
     {
-        Auth::logout();
+        Session::flush(); // Hapus semua data session
         return redirect()->route('login')->with('success', 'Berhasil logout.');
     }
 }

@@ -24,9 +24,14 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+// Dashboard route
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard')->middleware('auth');
+    if (!Session::has('user_id')) {
+        return redirect()->route('login')->with('error', 'Harap login terlebih dahulu.');
+    }
+
+    return view('dashboard', ['full_name' => Session::get('full_name')]);
+})->name('dashboard');
 
 Route::get('/hello', function () {
     return view('hello');
