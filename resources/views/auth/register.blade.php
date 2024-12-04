@@ -30,52 +30,97 @@
       <form action="{{ route('register') }}" method="POST">
         @csrf
         <div class="mb-3">
-          <label for="name" class="form-label">Full Name</label>
-          <input type="text" class="form-control" id="name" name="name" 
-                 placeholder="Enter your full name" 
-                 value="{{ old('name') }}" 
-                 required 
-                 pattern="[A-Za-z\s]+"
-                 title="Name should contain only letters and spaces">
+          <label for="full_name" class="form-label">Full Name</label>
+          <input type="text" class="form-control @error('full_name') is-invalid @enderror" 
+                 id="full_name" 
+                 name="full_name"
+                 placeholder="Enter your full name"
+                 value="{{ old('full_name') }}"
+                 required
+                 minlength="2"
+                 maxlength="100">
+          @error('full_name')
+            <div class="invalid-feedback">{{ $message }}</div>
+          @enderror
         </div>
+
+        <div class="mb-3">
+          <label for="phone_number" class="form-label">Phone Number</label>
+          <input type="tel" class="form-control @error('phone_number') is-invalid @enderror"
+                 id="phone_number"
+                 name="phone_number"
+                 placeholder="Enter your phone number"
+                 value="{{ old('phone_number') }}"
+                 maxlength="20">
+          @error('phone_number')
+            <div class="invalid-feedback">{{ $message }}</div>
+          @enderror
+        </div>
+
+        <div class="mb-3">
+          <label for="address" class="form-label">Address</label>
+          <textarea class="form-control @error('address') is-invalid @enderror"
+                    id="address"
+                    name="address"
+                    placeholder="Enter your address"
+                    rows="3">{{ old('address') }}</textarea>
+          @error('address')
+            <div class="invalid-feedback">{{ $message }}</div>
+          @enderror
+        </div>
+
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" name="email" 
+          <input type="email" class="form-control @error('email') is-invalid @enderror" 
+                 id="email" 
+                 name="email" 
                  placeholder="Enter email" 
                  value="{{ old('email') }}" 
                  required>
+          @error('email')
+            <div class="invalid-feedback">{{ $message }}</div>
+          @enderror
         </div>
+
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password" name="password" 
+          <input type="password" class="form-control @error('password') is-invalid @enderror" 
+                 id="password" 
+                 name="password" 
                  placeholder="Create password" 
                  required 
-                 minlength="8"
-                 pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
-                 title="Password must contain at least 8 characters, including uppercase, lowercase, number, and special character">
+                 minlength="8">
+          @error('password')
+            <div class="invalid-feedback">{{ $message }}</div>
+          @enderror
         </div>
+
         <div class="mb-3">
           <label for="password_confirmation" class="form-label">Confirm Password</label>
-          <input type="password" class="form-control" id="password_confirmation" 
+          <input type="password" class="form-control" 
+                 id="password_confirmation" 
                  name="password_confirmation" 
                  placeholder="Repeat password" 
-                 required>
+                 required 
+                 minlength="8">
         </div>
+
         <div class="mb-3 form-check">
           <input type="checkbox" class="form-check-input" id="terms" name="terms" required>
           <label class="form-check-label" for="terms">
             I agree to the terms and conditions
           </label>
         </div>
+
         <div class="d-grid">
           <button type="submit" class="btn btn-primary">Register</button>
         </div>
+
         <div class="text-center mt-3">
           <p>Already have an account? <a href="{{ route('login') }}">Login</a></p>
         </div>
       </form>
     </div>
   </div>
-  <script src="{{ asset('assets/js/custom.js') }}"></script>
 </body>
 </html>
