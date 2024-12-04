@@ -40,6 +40,7 @@ Route::get('/pencarian/search', [PencarianController::class, 'search'])->name('p
 Route::get('/pencarian/{id}', [PencarianController::class, 'show'])->name('pencarian.show');
 Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
 Route::delete('/booking/{id}', [BookingController::class, 'destroy'])->name('booking.destroy');
+Route::get('/recent-bookings', [DashboardController::class, 'index'])->name('recent.bookings');
 
 
 Route::get('/hello', function () {

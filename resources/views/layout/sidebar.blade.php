@@ -1,14 +1,24 @@
 <!-- Sidebar Start -->
-<aside class="left-sidebar">
+<aside class="left-sidebar" style="background-color: #c3dae6;">
   <div>
+    <!-- Brand Logo -->
     <div class="brand-logo d-flex align-items-center justify-content-between">
-      <a href="#" class="text-nowrap logo-img">
-        <img src="{{ asset('assets/images/logos/dark-logo.svg') }}" width="180" alt="Logo" />
+      <!-- Logo Teks -->
+      <a href="#" class="text-nowrap logo-text">
+        <span style="font-size: 1.5rem; font-weight: bold; color: #ffffff;">
+          BE
+        </span>
+        <span style="font-size: 1.5rem; font-weight: bold; color: #6c5ce7;">
+          explore
+        </span>
       </a>
+      <!-- Tombol Tutup untuk Sidebar -->
       <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
         <i class="ti ti-x fs-8"></i>
       </div>
     </div>
+
+    <!-- Sidebar Navigation -->
     <nav class="sidebar-nav scroll-sidebar" data-simplebar>
       <ul id="sidebarnav">
         <!-- Home Section -->
