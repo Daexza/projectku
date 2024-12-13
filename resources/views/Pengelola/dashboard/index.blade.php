@@ -9,21 +9,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets2/img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
-    <link rel="stylesheet" href="assets2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets2/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets2/css/magnific-popup.css">
-    <link rel="stylesheet" href="assets2/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets2/css/themify-icons.css">
-    <link rel="stylesheet" href="assets2/css/nice-select.css">
-    <link rel="stylesheet" href="assets2/css/flaticon.css">
-    <link rel="stylesheet" href="assets2/css/gijgo.css">
-    <link rel="stylesheet" href="assets2/css/animate.css">
-    <link rel="stylesheet" href="assets2/css/slicknav.css">
-    <link rel="stylesheet" href="assets2/css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/nice-select.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/gijgo.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/slicknav.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 </head>
 
@@ -64,7 +64,7 @@
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo-img">
                                 <a href="index.html">
-                                    <img src="assets2/img/logo.png" alt="">
+                                    <img src="img/logo.png" alt="">
                                 </a>
                             </div>
                         </div>
@@ -179,10 +179,10 @@
                 <div class="col-xl-7 col-lg-7">
                     <div class="about_thumb d-flex">
                         <div class="img_1">
-                            <img src="assets2/img/about/about_1.png" alt="">
+                            <img src="img/about/about_1.png" alt="">
                         </div>
                         <div class="img_2">
-                            <img src="assets2/img/about/about_2.png" alt="">
+                            <img src="img/about/about_2.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -206,7 +206,7 @@
                 <div class="col-xl-4 col-md-4">
                     <div class="single_offers">
                         <div class="about_thumb">
-                            <img src="assets2/img/offers/1.png" alt="">
+                            <img src="img/offers/1.png" alt="">
                         </div>
                         <h3>Up to 35% savings on Club <br>
                             rooms and Suites</h3>
@@ -221,7 +221,7 @@
                 <div class="col-xl-4 col-md-4">
                     <div class="single_offers">
                         <div class="about_thumb">
-                            <img src="assets2/img/offers/2.png" alt="">
+                            <img src="img/offers/2.png" alt="">
                         </div>
                         <h3>Up to 35% savings on Club <br>
                             rooms and Suites</h3>
@@ -236,7 +236,7 @@
                 <div class="col-xl-4 col-md-4">
                     <div class="single_offers">
                         <div class="about_thumb">
-                            <img src="assets2/img/offers/3.png" alt="">
+                            <img src="img/offers/3.png" alt="">
                         </div>
                         <h3>Up to 35% savings on Club <br>
                             rooms and Suites</h3>
@@ -273,10 +273,10 @@
                 <div class="col-xl-7 col-lg-7">
                     <div class="about_thumb2 d-flex">
                         <div class="img_1">
-                            <img src="assets2/img/about/1.png" alt="">
+                            <img src="img/about/1.png" alt="">
                         </div>
                         <div class="img_2">
-                            <img src="assets2/img/about/2.png" alt="">
+                            <img src="img/about/2.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -313,7 +313,7 @@
         <div class="rooms_here">
             <div class="single_rooms">
                 <div class="room_thumb">
-                    <img src="assets2/img/rooms/1.png" alt="">
+                    <img src="img/rooms/1.png" alt="">
                     <div class="room_heading d-flex justify-content-between align-items-center">
                         <div class="room_heading_inner">
                             <span>From $250/night</span>
@@ -325,7 +325,7 @@
             </div>
             <div class="single_rooms">
                 <div class="room_thumb">
-                    <img src="assets2/img/rooms/2.png" alt="">
+                    <img src="img/rooms/2.png" alt="">
                     <div class="room_heading d-flex justify-content-between align-items-center">
                         <div class="room_heading_inner">
                             <span>From $250/night</span>
@@ -337,7 +337,7 @@
             </div>
             <div class="single_rooms">
                 <div class="room_thumb">
-                    <img src="assets2/img/rooms/3.png" alt="">
+                    <img src="img/rooms/3.png" alt="">
                     <div class="room_heading d-flex justify-content-between align-items-center">
                         <div class="room_heading_inner">
                             <span>From $250/night</span>
@@ -349,7 +349,7 @@
             </div>
             <div class="single_rooms">
                 <div class="room_thumb">
-                    <img src="assets2/img/rooms/4.png" alt="">
+                    <img src="img/rooms/4.png" alt="">
                     <div class="room_heading d-flex justify-content-between align-items-center">
                         <div class="room_heading_inner">
                             <span>From $250/night</span>
@@ -391,7 +391,7 @@
     <!-- instragram_area_start -->
     <div class="instragram_area">
         <div class="single_instagram">
-            <img src="assets2/img/instragram/1.png" alt="">
+            <img src="img/instragram/1.png" alt="">
             <div class="ovrelay">
                 <a href="#">
                     <i class="fa fa-instagram"></i>
@@ -399,7 +399,7 @@
             </div>
         </div>
         <div class="single_instagram">
-            <img src="assets2/img/instragram/2.png" alt="">
+            <img src="img/instragram/2.png" alt="">
             <div class="ovrelay">
                 <a href="#">
                     <i class="fa fa-instagram"></i>
@@ -407,7 +407,7 @@
             </div>
         </div>
         <div class="single_instagram">
-            <img src="assets2/img/instragram/3.png" alt="">
+            <img src="img/instragram/3.png" alt="">
             <div class="ovrelay">
                 <a href="#">
                     <i class="fa fa-instagram"></i>
@@ -415,7 +415,7 @@
             </div>
         </div>
         <div class="single_instagram">
-            <img src="assets2/img/instragram/4.png" alt="">
+            <img src="img/instragram/4.png" alt="">
             <div class="ovrelay">
                 <a href="#">
                     <i class="fa fa-instagram"></i>
@@ -423,7 +423,7 @@
             </div>
         </div>
         <div class="single_instagram">
-            <img src="assets2/img/instragram/5.png" alt="">
+            <img src="img/instragram/5.png" alt="">
             <div class="ovrelay">
                 <a href="#">
                     <i class="fa fa-instagram"></i>
@@ -572,33 +572,33 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!-- form itself end -->
 
     <!-- JS here -->
-    <script src="assets2/js/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="assets2/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="assets2/js/popper.min.js"></script>
-    <script src="assets2/js/bootstrap.min.js"></script>
-    <script src="assets2/js/owl.carousel.min.js"></script>
-    <script src="assets2/js/isotope.pkgd.min.js"></script>
-    <script src="assets2/js/ajax-form.js"></script>
-    <script src="assets2/js/waypoints.min.js"></script>
-    <script src="assets2/js/jquery.counterup.min.js"></script>
-    <script src="assets2/js/imagesloaded.pkgd.min.js"></script>
-    <script src="assets2/js/scrollIt.js"></script>
-    <script src="assets2/js/jquery.scrollUp.min.js"></script>
-    <script src="assets2/js/wow.min.js"></script>
-    <script src="assets2/js/nice-select.min.js"></script>
-    <script src="assets2/js/jquery.slicknav.min.js"></script>
-    <script src="assets2/js/jquery.magnific-popup.min.js"></script>
-    <script src="assets2/js/plugins.js"></script>
-    <script src="assets2/js/gijgo.min.js"></script>
+    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/ajax-form.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/scrollIt.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/nice-select.min.js"></script>
+    <script src="js/jquery.slicknav.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/gijgo.min.js"></script>
 
     <!--contact js-->
-    <script src="assets2/js/contact.js"></script>
-    <script src="assets2/js/jquery.ajaxchimp.min.js"></script>
-    <script src="assets2/js/jquery.form.js"></script>
-    <script src="assets2/js/jquery.validate.min.js"></script>
-    <script src="assets2/js/mail-script.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/jquery.ajaxchimp.min.js"></script>
+    <script src="js/jquery.form.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/mail-script.js"></script>
 
-    <script src="assets2/js/main.js"></script>
+    <script src="js/main.js"></script>
     <script>
         $('#datepicker').datepicker({
             iconsLibrary: 'fontawesome',

@@ -11,12 +11,12 @@ use App\Http\Controllers\BookingController;
 
 
 
-Route::get('/', function () {
+Route::get('/pengelola', function () {
     return view('welcome');
 });
 
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
