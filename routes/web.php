@@ -26,14 +26,14 @@ Route::post('/register', [RegisterController::class, 'register'])
 ->name('register');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// // Dashboard route
-// Route::get('/dashboard', function () {
-//     // if (!Session::has('user_id')) {
-//     //     return redirect()->route('login')->with('error', 'Harap login terlebih dahulu.');
-//     // }
+// // // Dashboard route
+// // Route::get('/dashboard', function () {
+// //     // if (!Session::has('user_id')) {
+// //     //     return redirect()->route('login')->with('error', 'Harap login terlebih dahulu.');
+// //     // }
 
-//     return view('dashboard', ['full_name' => Session::get('full_name')]);
-// })->name('dashboard.index');
+// //     return view('dashboard', ['full_name' => Session::get('full_name')]);
+// // })->name('dashboard.index');
 
 Route::get('/pencarian', [PencarianController::class, 'index'])->name('pencarian.index');
 Route::get('/pencarian/search', [PencarianController::class, 'search'])->name('pencarian.search'); // Fitur pencarian
