@@ -29,6 +29,7 @@
 
       <form action="{{ route('register') }}" method="POST">
         @csrf
+
         <div class="mb-3">
           <label for="full_name" class="form-label">Full Name</label>
           <input type="text" class="form-control @error('full_name') is-invalid @enderror" 
@@ -103,6 +104,19 @@
                  placeholder="Repeat password" 
                  required 
                  minlength="8">
+        </div>
+
+        <div class="mb-3">
+          <label for="role" class="form-label">Role</label>
+          <select class="form-control @error('role') is-invalid @enderror" id="role" name="role" required>
+              <option value="">Select Role</option>
+              <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+              <option value="manager" {{ old('role') == 'manager' ? 'selected' : '' }}>Manager</option>
+              <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>User </option>
+          </select>
+          @error('role')
+              <div class="invalid-feedback">{{ $message }}</div>
+          @enderror
         </div>
 
         <div class="mb-3 form-check">

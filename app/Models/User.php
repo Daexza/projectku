@@ -19,13 +19,19 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 
-        'email', 
-        'password', 
-        'verification_token',
-        'status'
-    ];      
+        'full_name',
+        'phone_number',
+        'address',
+        'email',
+        'password',
+        'role', // Add role to fillable
+    ];
 
+    // Check if the user has a specific role
+    public function hasRole($role)
+    {
+        return $this->role === $role;
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
