@@ -16,11 +16,30 @@ class PencarianController extends Controller
     public function search(Request $request)
     {
         $query = $request->input('search');
-        $pencarian = Pencarian::where('name', 'LIKE', "%$query%")
-            ->orWhere('description', 'LIKE', "%$query%")
-            ->get();
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
 
-        return view('pencarian.index', compact('pencarian', 'query'));
+        // Query pencarian
+        $pencarian = Pencarian::query();
+
+        // Filter nama atau deskripsi
+        if ($query) {
+            $pencarian->where(function ($q) use ($query) {
+                $q->where('name', 'LIKE', "%$query%")
+                  ->orWhere('description', 'LIKE', "%$query%");
+            });
+        }
+
+        // Filter berdasarkan tanggal
+        if ($startDate && $endDate) {
+            $pencarian->where('available_from', '<=', $startDate)
+                      ->where('available_to', '>=', $endDate);
+        }
+
+        // Eksekusi query
+        $pencarian = $pencarian->get();
+
+        return view('pencarian.index', compact('pencarian', 'query', 'startDate', 'endDate'));
     }
 
     public function show($id)

@@ -2,10 +2,10 @@
 <header class="app-header">
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #c3dae6;">
     <div class="container-fluid d-flex justify-content-between align-items-center">
-      <!-- Bagian Kiri: Teks dan Logo -->
+      <!-- Bagian Kiri: Teks dan Icon -->
       <div class="navbar-brand d-flex align-items-center">
-        <img src="{{ asset('assets/images/icons/hotel.png') }}" alt="Hotel Icon" width="30" height="30" class="me-2">
-        <h4 class="mb-0 me-2 text-white fw-bold">Find Accommodation to Stay</h4>
+        <i class="fa-solid fa-hotel me-2" style="color: #ffffff; font-size: 1.5rem;"></i>
+        <h4 class="mb-0 text-white fw-bold">Find Accommodation to Stay</h4>
       </div>
 
       <!-- Bagian Kanan: Profil User -->
