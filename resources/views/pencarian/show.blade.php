@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-5">
     <div class="card">
-        <img src="{{ asset('storage/' . $pencarian->image_url) }}" class="card-img-top" alt="{{ $pencarian->name }}">
+<img src="{{ asset('storage/' . $pencarian->image_url) }}" class="card-img-top" alt="{{ $pencarian->name }}">
         <div class="card-body">
             <h1 class="card-title">{{ $pencarian->name }}</h1>
             <p class="card-text">{{ $pencarian->description }}</p>

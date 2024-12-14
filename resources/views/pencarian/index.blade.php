@@ -17,7 +17,7 @@
         font-size: 2.5rem;
         font-weight: bold;
         color: white; /* Warna putih untuk teks */
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Bayangan agar lebih jelas */
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     }
 
     .search-banner .logo {
@@ -31,7 +31,7 @@
     }
 
     .search-banner .logo span {
-        color: #7C4DFF; /* Warna ungu untuk "explore" */
+        color: #7C4DFF;
     }
 
     /* Search Form */
@@ -54,16 +54,8 @@
     .search-form .btn:hover {
         background-color: #5b35cc;
     }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-        .search-banner h1 {
-            font-size: 1.8rem;
-        }
-    }
 </style>
 
-<!-- Background Section -->
 <div class="search-banner">
     <div class="logo">BE<span>explore</span></div>
     <div class="container text-center">
