@@ -25,35 +25,5 @@
         </div>
     </div>
 
-    <!-- Content Section -->
-    <div class="container mt-5">
-        <h2>Recent Bookings</h2>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Accommodation Name</th>
-                    <th>User Name</th>
-                    <th>Email</th>
-                    <th>Booking Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse($bookings as $booking)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $booking->accommodation_name }}</td>
-                    <td>{{ $booking->user_name }}</td>
-                    <td>{{ $booking->email }}</td>
-                    <td>{{ $booking->date }}</td>
-                </tr>
-                @empty
-                <tr>
-                    <td colspan="5" class="text-center">No bookings yet.</td>
-                </tr>
-                @endforelse
-            </tbody>
-        </table>
-    </div>
-</div>
+   
 @endsection
