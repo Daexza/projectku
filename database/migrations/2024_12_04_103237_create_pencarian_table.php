@@ -15,6 +15,7 @@ return new class extends Migration
             $table->decimal('longitude', 10, 7)->nullable();
             $table->string('phone_number', 20)->nullable();
             $table->text('facilities')->nullable();
+            $table->text('location')->nullable();
             $table->decimal('rating', 2, 1)->default(0);
             $table->string('image_url')->nullable();
             $table->timestamps();

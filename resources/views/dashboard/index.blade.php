@@ -8,7 +8,7 @@
     <div class="bg-image text-white text-center" style="background-image: url('https://i.pinimg.com/736x/9d/03/5e/9d035e65b4246822c324b6c9d1c3e741.jpg'); background-size: cover; background-position: center; height: 100vh;">
         <div class="overlay" style="background-color: rgba(0, 0, 0, 0.3); height: 100%; position: relative;">
             <!-- Logo Section -->
-            <div class="search-banner position-absolute top-0 start-0 m-3">
+            <div class="s~earch-banner position-absolute top-0 start-0 m-3">
                 <div class="logo" style="font-size: 1.5rem; font-weight: bold;">
                     <span style="color: #ffffff;">BE</span><span style="color: #7166f9;">explore</span>
                 </div>
