@@ -1,9 +1,7 @@
-<!-- Sidebar Start -->
 <aside class="left-sidebar" style="background-color: #c3dae6;">
   <div>
     <!-- Brand Logo -->
     <div class="brand-logo d-flex align-items-center justify-content-between">
-      <!-- Logo Teks -->
       <a href="#" class="text-nowrap logo-text">
         <span style="font-size: 1.5rem; font-weight: bold; color: #ffffff;">
           BE
@@ -12,7 +10,6 @@
           explore
         </span>
       </a>
-      <!-- Tombol Tutup untuk Sidebar -->
       <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
         <i class="ti ti-x fs-8"></i>
       </div>
@@ -45,6 +42,16 @@
           </a>
         </li>
 
+        <!-- Booking Section -->
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="{{ route('booking.index') }}" aria-expanded="false">
+            <span>
+              <i class="ti ti-calendar-event"></i>
+            </span>
+            <span class="hide-menu">Booking</span>
+          </a>
+        </li>
+
         <!-- Auth Section -->
         <li class="nav-small-cap">
           <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
@@ -70,4 +77,3 @@
     </nav>
   </div>
 </aside>
-<!-- Sidebar End -->

@@ -7,29 +7,50 @@ use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'accommodation_id' => 'required|integer',
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'date' => 'required|date',
-        ]);
-
-        Booking::create($validated);
-
-        return redirect()->back()->with('success', 'Booking berhasil dilakukan!');
-    }
-
-    public function destroy($id)
-    {
-        Booking::destroy($id);
-        return redirect()->route('dashboard.index')->with('success', 'Booking berhasil dihapus!');
-    }
-
+    /**
+     * Tampilkan daftar booking.
+     */
     public function index()
     {
+        // Ambil data booking dengan relasi ke accommodation
         $bookings = Booking::with('accommodation')->get();
-        return view('dashboard.index', compact('bookings'));
+
+        // Tampilkan halaman daftar booking
+        return view('booking.index', compact('bookings'));
+    }
+
+    /**
+     * Simpan data booking baru.
+     */
+    public function store(Request $request)
+    {
+        // Validasi data yang diterima
+        $validated = $request->validate([
+            'accommodation_id' => 'required|integer|exists:accommodations,id', // Pastikan ID ada di tabel accommodations
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'date' => 'required|date|after_or_equal:today', // Pastikan tanggal minimal hari ini
+        ]);
+
+        // Simpan data booking
+        Booking::create($validated);
+
+        // Redirect dengan pesan sukses
+        return redirect()->route('booking.index')->with('success', 'Booking berhasil dilakukan!');
+    }
+
+    /**
+     * Hapus data booking.
+     */
+    public function destroy($id)
+    {
+        // Cari booking berdasarkan ID atau gagal
+        $booking = Booking::findOrFail($id);
+
+        // Hapus booking
+        $booking->delete();
+
+        // Redirect dengan pesan sukses
+        return redirect()->route('booking.index')->with('success', 'Booking berhasil dihapus!');
     }
 }

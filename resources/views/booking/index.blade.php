@@ -4,6 +4,7 @@
 <div class="container mt-5">
     <h1>Daftar Booking</h1>
 
+    <!-- Tampilkan pesan sukses -->
     @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -11,25 +12,29 @@
     @endif
 
     <!-- Formulir untuk melakukan booking -->
-    <form action="{{ route('booking.store') }}" method="POST">
+    <form action="{{ route('booking.store') }}" method="POST" class="mb-4">
         @csrf
-        <label for="accommodation_id">Accommodation ID</label>
-        <input type="number" name="accommodation_id" id="accommodation_id" required>
-
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name" required>
-
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" required>
-
-        <label for="date">Date</label>
-        <input type="date" name="date" id="date" required>
-
-        <button type="submit">Book Now</button>
+        <div class="mb-3">
+            <label for="accommodation_id" class="form-label">Accommodation ID</label>
+            <input type="number" name="accommodation_id" id="accommodation_id" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" name="name" id="name" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" id="email" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="date" class="form-label">Date</label>
+            <input type="date" name="date" id="date" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Book Now</button>
     </form>
 
     <!-- Tabel daftar booking -->
-    <table class="table">
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th>#</th>
@@ -44,7 +49,7 @@
             @forelse ($bookings as $booking)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $booking->accommodation->name }}</td>  <!-- Menampilkan nama akomodasi -->
+                    <td>{{ $booking->accommodation->name ?? '-' }}</td> <!-- Validasi jika null -->
                     <td>{{ $booking->name }}</td>
                     <td>{{ $booking->email }}</td>
                     <td>{{ $booking->date }}</td>
@@ -59,7 +64,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="6">Belum ada booking.</td>
+                    <td colspan="6" class="text-center">Belum ada booking.</td>
                 </tr>
             @endforelse
         </tbody>

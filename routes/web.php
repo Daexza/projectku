@@ -15,6 +15,7 @@ Route::get('/pengelola', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 
@@ -43,6 +44,10 @@ Route::delete('/booking/{id}', [BookingController::class, 'destroy'])->name('boo
 Route::get('/recent-bookings', [DashboardController::class, 'index'])->name('recent.bookings');
 Route::get('/pencarian', [PencarianController::class, 'index'])->name('pencarian.index');
 Route::get('/pencarian/search', [PencarianController::class, 'search'])->name('pencarian.search');
+
+
+Route::resource('booking', BookingController::class);
+Route::get('/', [BookingController::class, 'index'])->name('home');
 
 
 Route::get('/hello', function () {
