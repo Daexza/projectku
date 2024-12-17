@@ -110,7 +110,7 @@
         @forelse ($pencarian as $item)
         <div class="col-md-4 mb-4">
             <div class="card shadow">
-                <img src="{{ asset('storage/' . $item->image_url) }}" class="card-img-top" alt="{{ $item->name }}" style="height: 200px; object-fit: cover;">
+                <img src="{{  $item->image_url }}" class="card-img-top" alt="{{ $item->name }}" style="height: 200px; object-fit: cover;">
                 <div class="card-body">
                     <h5 class="card-title">{{ $item->name }}</h5>
                     <p class="card-text">{{ Str::limit($item->description, 50) }}</p>

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Http;
 class PencarianSeeder extends Seeder
 {
     public function run()
-    { 
+    {
         // Data Yogyakarta
         DB::table('pencarian')->insert([
             [
@@ -25,7 +25,7 @@ class PencarianSeeder extends Seeder
                 'phone_number' => '0274567890',
                 'facilities' => 'Kolam renang, Wi-Fi gratis, Restoran',
                 'rating' => 4.7,
-                'image_url' => 'https://i.pinimg.com/236x/94/84/dd/9484dd1a8d93f90b616e025f8da3430.jpg',
+                'image_url' => 'https://i.pinimg.com/736x/17/ca/06/17ca06c108252e23ed8f230c894fe736.jpg',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
                 'available_from' => Carbon::now()->toDateString(),
@@ -372,11 +372,10 @@ DB::table('pencarian')->insert([
         'updated_at' => Carbon::now(),
         'available_from' => Carbon::now()->toDateString(),
         'available_to' => Carbon::now()->addDays(30)->toDateString(),
-    
+
     ],
-    
+
 ]);
 
     }
 }
-   
