@@ -1,6 +1,7 @@
 @extends('layout.home')
 
 @section('content')
+
 <div class="container mt-5">
     <h1 class="text-center">{{ $pencarian->name }}</h1>
     <p class="text-center">{{ $pencarian->description }}</p>
@@ -28,4 +29,5 @@
         @endforelse
     </div>
 </div>
+
 @endsection

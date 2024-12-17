@@ -13,6 +13,6 @@ class Room extends Model
 
     public function pencarian()
     {
-        return $this->belongsTo(Pencarian::class, 'pencarian_id', 'id');
+        return $this->hasMany(Room::class, 'pencarian_id', 'id'); // foreign_key dan local_key
     }
 }

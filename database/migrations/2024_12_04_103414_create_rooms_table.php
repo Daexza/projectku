@@ -9,16 +9,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('rooms', function (Blueprint $table) {
-            $table->id('room_id'); // Primary key untuk tabel rooms
-            $table->foreignId('pencarian_id')->constrained('pencarian')->onDelete('cascade');
- // Jika data di tabel pencarian dihapus, rooms ikut dihapus
+            $table->id('room_id'); // Primary key
+            $table->foreignId('pencarian_id') // Foreign key
+                  ->constrained('pencarian') // Mengacu ke tabel 'pencarian'
+                  ->onDelete('cascade');
             $table->string('room_number', 50);
             $table->enum('room_type', ['single', 'double', 'suite']);
             $table->decimal('price_per_night', 10, 2);
             $table->text('facilities')->nullable();
             $table->timestamps();
         });
-    }
+    }        
 
     public function down(): void
     {
