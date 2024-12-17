@@ -3,28 +3,60 @@
 @section('content')
 <div class="container mt-5">
     <div class="card shadow">
-        <img src="{{ asset('storage/' . $pencarian->image_url) }}" class="card-img-top" alt="{{ $pencarian->name }}" style="height: 400px; object-fit: cover;">
+        <!-- Gambar Utama -->
+        <img src="{{ asset('storage/' . $pencarian->image_url) }}"
+             class="card-img-top"
+             alt="{{ $pencarian->name }}"
+             style="height: 400px; object-fit: cover;">
+
+        <!-- Konten Detail -->
         <div class="card-body">
-            <h1 class="card-title">{{ $pencarian->name }}</h1>
-            <p>{{ $pencarian->description }}</p>
-            <p><strong>Location:</strong> {{ $pencarian->location }}</p>
-            <p><strong>Available From:</strong> {{ $pencarian->available_from }} to {{ $pencarian->available_to }}</p>
-            <p><strong>Price:</strong> ${{ number_format($pencarian->price, 2) }}</p>
-            <p><strong>Facilities:</strong> {{ $pencarian->facilities }}</p>
-            <p><strong>Rating:</strong> {{ $pencarian->rating }}/5</p>
-            <p><strong>Contact:</strong> {{ $pencarian->phone_number }}</p>
+            <!-- Judul dan Harga -->
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h1 class="card-title">{{ $pencarian->name }}</h1>
+                    <span class="badge bg-warning text-dark">⭐ {{ $pencarian->rating }} / 5</span>
+                </div>
+                <div class="text-end">
+                    <h4 class="text-danger fw-bold">
+                        Rp {{ number_format($pencarian->price, 0, ',', '.') }}
+                    </h4>
+                    <a href="#" class="btn btn-warning">Select Room</a>
+                </div>
+            </div>
 
-            <!-- Google Maps Embed -->
-            <h4>Location Map</h4>
-            <iframe
-                width="100%"
-                height="300"
-                frameborder="0"
-                style="border:0"
-                src="https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q={{ urlencode($pencarian->location) }}"
-                allowfullscreen>
-            </iframe>
+            <!-- Deskripsi -->
+            <p class="mt-3">{{ $pencarian->description }}</p>
 
+            <!-- Informasi Tambahan -->
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <p><strong>Location:</strong> {{ $pencarian->location }}</p>
+                    <p><strong>Available:</strong> {{ $pencarian->available_from }} to {{ $pencarian->available_to }}</p>
+                    <p><strong>Contact:</strong> {{ $pencarian->phone_number }}</p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Facilities:</strong></p>
+                    <ul>
+                        @foreach(explode(',', $pencarian->facilities) as $facility)
+                            <li>{{ trim($facility) }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Lokasi Peta -->
+            <h4 class="mt-4">Location Map</h4>
+            <div class="map-container" style="height: 300px; border-radius: 10px; overflow: hidden;">
+                <iframe
+                    src="https://www.google.com/maps?q={{ $pencarian->latitude }},{{ $pencarian->longitude }}&output=embed"
+                    width="100%" height="100%" frameborder="0"
+                    style="border:0;" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</div>
             <!-- Booking Form -->
             <h3 class="mt-4">Book This Accommodation</h3>
             <form action="{{ route('booking.store') }}" method="POST">

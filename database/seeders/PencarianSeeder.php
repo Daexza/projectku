@@ -31,6 +31,7 @@ class PencarianSeeder extends Seeder
                 'available_from' => Carbon::now()->toDateString(),
                 'available_to' => Carbon::now()->addDays(30)->toDateString(),
             ],
+
             [
                 'name' => 'Hyatt Regency Yogyakarta',
                 'description' => 'Resor luas dengan lapangan golf dan pemandangan hijau.',
@@ -40,12 +41,13 @@ class PencarianSeeder extends Seeder
                 'phone_number' => '0274888888',
                 'facilities' => 'Lapangan golf, Kolam renang, Spa',
                 'rating' => 4.8,
-                'image_url' => 'https://i.pinimg.com/236x/a7/32/c8/a732c86f8d67590f9a228d527b2ad136.jpg',
+                'image_url' => 'https://www.ahstatic.com/photos/5451_ho_00_p_1024x768.jpg',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
                 'available_from' => Carbon::now()->toDateString(),
                 'available_to' => Carbon::now()->addDays(30)->toDateString(),
             ],
+
             [
                 'name' => 'Royal Ambarrukmo Yogyakarta',
                 'description' => 'Hotel mewah dengan sentuhan budaya Jawa.',
