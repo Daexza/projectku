@@ -73,6 +73,17 @@
             <span class="hide-menu">Register</span>
           </a>
         </li>
+        <li class="sidebar-item">
+          <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+            @csrf
+            <button type="submit" class="sidebar-link" style="background: none; border: none; padding: 0; color: inherit; cursor: pointer;">
+              <span>
+                <i class="ti ti-logout"></i>
+              </span>
+              <span class="hide-menu">Logout</span>
+            </button>
+          </form>
+        </li>
       </ul>
     </nav>
   </div>
