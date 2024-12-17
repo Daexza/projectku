@@ -8,12 +8,13 @@
 
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logos/favicon.png') }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
   <!-- External CSS -->
   <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css') }}" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
-    integrity="sha512-vVn5lQuuV9FOG9kn7IqW5LfWIfBR/QMtwPmR2JweAAnWt8/XZuwEfjvYlyNht5R/Xap2o5+hj4rIwrfuBavZow==" 
-    crossorigin="anonymous" 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-vVn5lQuuV9FOG9kn7IqW5LfWIfBR/QMtwPmR2JweAAnWt8/XZuwEfjvYlyNht5R/Xap2o5+hj4rIwrfuBavZow=="
+    crossorigin="anonymous"
     referrerpolicy="no-referrer" />
 </head>
 

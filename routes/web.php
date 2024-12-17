@@ -11,9 +11,9 @@ use App\Http\Controllers\BookingController;
 
 
 
-Route::get('/pengelola', function () {
-    return view('welcome');
-});
+// Route::get('/pengelola', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
@@ -47,7 +47,7 @@ Route::get('/pencarian/search', [PencarianController::class, 'search'])->name('p
 
 
 Route::resource('booking', BookingController::class);
-Route::get('/', [BookingController::class, 'index'])->name('home');
+Route::get('/', [DashboardController::class, 'index'])->name('home');
 
 
 Route::get('/hello', function () {
