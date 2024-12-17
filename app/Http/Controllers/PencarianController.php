@@ -47,4 +47,12 @@ class PencarianController extends Controller
         $pencarian = Pencarian::where('id', $id)->firstOrFail();
         return view('pencarian.show', compact('pencarian'));
     }
+    public function showRoom($id)
+{
+    // Ganti 'pencarian_id' dengan 'id'
+    $pencarian = Pencarian::findOrFail($id); 
+    return view('pencarian.room', compact('pencarian'));
+}
+
+    
 }

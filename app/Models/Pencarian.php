@@ -27,6 +27,6 @@ class Pencarian extends Model
         public $timestamps = false; // Nonaktifkan timestamps (karena sudah diatur manual)
     public function rooms()
     {
-        return $this->hasMany(Room::class, 'pencarian_id');
+        return $this->hasMany(Room::class, 'pencarian_id', 'id');
     }
 }

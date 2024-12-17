@@ -9,11 +9,10 @@ class Room extends Model
     use HasFactory;
 
     protected $table = 'rooms';
-    protected $primaryKey = 'room_id';
     protected $fillable = ['pencarian_id', 'room_number', 'room_type', 'price_per_night', 'facilities'];
 
     public function pencarian()
     {
-        return $this->belongsTo(Pencarian::class, 'pencarian_id');
+        return $this->belongsTo(Pencarian::class, 'pencarian_id', 'id');
     }
 }

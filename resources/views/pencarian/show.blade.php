@@ -21,7 +21,7 @@
                             <h4 class="text-danger fw-bold">
                                 Rp {{ number_format($pencarian->price, 0, ',', '.') }}
                             </h4>
-                            <a href="#" class="btn btn-warning">Select Room</a>
+                            <a href="{{ route('pencarian.room', $pencarian->id) }}" class="btn btn-warning">Select Room</a>
                         </div>
                     </div>
                 </div>

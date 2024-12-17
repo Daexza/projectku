@@ -12,19 +12,12 @@ use App\Http\Controllers\UserController;
 
 
 
-<<<<<<< HEAD
-// Route::get('/pengelola', function () {
-//     return view('welcome');
-// });
-
-=======
 Route::get('/pengelola', function () {
     return view('welcome');
 });
 // Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 // Route::get('/manager/dashboard', [ManagerController::class, 'index'])->name('manager.dashboard');
 // Route::get('/user/dashboard', [UserController::class, 'index'])->name('dashboard,index');
->>>>>>> 4675fe04c39ce9852021bfc12e814d8675c633bb
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
 // Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
@@ -97,6 +90,11 @@ Route::get('/pencarian/search', [PencarianController::class, 'search'])->name('p
 
 Route::resource('booking', BookingController::class);
 Route::get('/', [DashboardController::class, 'index'])->name('home');
+
+Route::get('/pencarian/room/{id}', [PencarianController::class, 'showRoom'])->name('pencarian.room');
+Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
+Route::get('/pencarian/room/{id}', [PencarianController::class, 'showRoom'])->name('pencarian.room');
+Route::get('/pencarian/room/{id}', [PencarianController::class, 'showRoom'])->name('pencarian.room');
 
 
 Route::get('/hello', function () {

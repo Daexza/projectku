@@ -26,11 +26,12 @@ class BookingController extends Controller
     {
         // Validasi data yang diterima
         $validated = $request->validate([
-            'accommodation_id' => 'required|integer|exists:accommodations,id', // Pastikan ID ada di tabel accommodations
+            'accommodation_id' => 'required|integer|exists:pencarian,id', // Validasi ke tabel 'pencarian'
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'date' => 'required|date|after_or_equal:today', // Pastikan tanggal minimal hari ini
+            'date' => 'required|date|after_or_equal:today',
         ]);
+        
 
         // Simpan data booking
         Booking::create($validated);
