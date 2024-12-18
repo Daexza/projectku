@@ -42,7 +42,7 @@ class LoginController extends Controller
                     return redirect()->route('manager.dashboard')->with('success', 'Login berhasil sebagai Manager!');
                 case 'user':
                 default:
-                    return redirect()->route('dashboard.index')->with('success', 'Login berhasil sebagai User!');
+                    return redirect()->route('pencarian.index')->with('success', 'Login berhasil sebagai User!');
             }
         }
 
