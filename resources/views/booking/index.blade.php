@@ -58,19 +58,7 @@
                         <label>Booking Date</label>
                         <input type="date" name="date" class="form-control" required>
                     </div>
-<<<<<<< HEAD
-=======
-
-                    @if(isset($room))
-                        <input type="hidden" name="room_id" value="{{ $room->room_id }}">
-                        <div class="col-md-3 mb-3">
-                            <label>Room</label>
-                            <input type="text" class="form-control" value="{{ $room->room_number }} - {{ ucfirst($room->room_type) }}" disabled>
-                        </div>
-                    @endif
->>>>>>> 982d1358759533743810d4815f89d6dc40cc233b
                 </div>
-            
                 <button type="submit" class="btn btn-success">Book Now</button>
             </form>
 
