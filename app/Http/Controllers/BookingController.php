@@ -12,8 +12,8 @@ class BookingController extends Controller
      */
     public function index(Request $request)
     {
-        // Ambil data booking dengan relasi ke accommodation
-        $bookings = Booking::with('accommodation')->get();
+        // Ambil semua data booking
+        $bookings = Booking::with(['accommodation', 'room'])->get();
     
         // Ambil semua data dari tabel 'pencarian'
         $accommodations = \DB::table('pencarian')->get();
@@ -24,9 +24,10 @@ class BookingController extends Controller
             $room = \App\Models\Room::with('pencarian')->find($request->room_id);
         }
     
-        // Tampilkan halaman daftar booking
         return view('booking.index', compact('bookings', 'accommodations', 'room'));
     }
+    
+
     
     /**
      * Simpan data booking baru.

@@ -14,12 +14,12 @@ return new class extends Migration
             $table->foreign('pencarian_id')
                   ->references('id')
                   ->on('pencarian')
-                  ->onDelete('cascade'); // Relasi ke tabel pencarian
-
+                  ->onDelete('cascade');
             $table->string('room_number', 50);
-            $table->enum('room_type', ['single', 'double', 'suite']);
+            $table->enum('room_type', ['single', 'double', 'suite', 'deluxe', 'standard']);
             $table->decimal('price_per_night', 10, 2);
             $table->text('facilities')->nullable();
+            $table->string('image_url')->nullable(); // Tambahkan kolom untuk URL gambar
             $table->timestamps();
         });
     }

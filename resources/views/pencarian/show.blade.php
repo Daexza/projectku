@@ -7,9 +7,9 @@
         <div class="col-12">
             <div class="card shadow mb-4">
                 <!-- Gambar Utama -->
-                <img src="{{ asset('storage/' . $pencarian->image_url) }}"
-                     class="card-img-top"
+                <img src="{{ $pencarian->image_url }}"
                      alt="{{ $pencarian->name }}"
+                     class="card-img-top"
                      style="height: 400px; object-fit: cover;">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
@@ -18,11 +18,17 @@
                             <span class="badge bg-warning text-dark">⭐ {{ $pencarian->rating }} / 5</span>
                         </div>
                         <div class="text-end">
+                            {{-- <!-- Harga Start From -->
+                            <h5 class="text-success fw-bold">
+                                Start From: Rp {{ number_format($minPrice, 0, ',', '.') }}
+                            </h5> --}}
+                            <!-- Harga Utama (optional) -->
                             <h4 class="text-danger fw-bold">
-                               Rp {{ number_format($pencarian->price, 0, ',', '.') }}
+                                Start From: Rp {{ number_format($pencarian->price ?? $minPrice, 0, ',', '.') }}
                             </h4>
                             <a href="{{ route('pencarian.room', $pencarian->id) }}" class="btn btn-warning">Select Room</a>
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -47,27 +53,25 @@
                 <ul class="list-unstyled">
                     @foreach(explode(',', $pencarian->facilities) as $facility)
                         <li class="mb-2">
-                            <!-- Tambahkan ikon sesuai fasilitas -->
-                                    @if(str_contains($facility, 'Kolam Renang'))
-                                    <i class="fas fa-swimming-pool text-primary"></i>
-                                    @elseif(str_contains($facility, 'Restoran'))
-                                    <i class="fas fa-utensils text-success"></i>
-                                    @elseif(str_contains($facility, 'Spa'))
-                                    <i class="fas fa-spa text-warning"></i>
-                                    @elseif(str_contains($facility, 'Gym'))
-                                    <i class="fas fa-dumbbell text-info"></i>
-                                    @elseif(str_contains($facility, 'Parkir'))
-                                    <i class="fas fa-parking text-dark"></i>
-                                    @elseif(str_contains($facility, 'WiFi'))
-                                    <i class="fas fa-wifi text-primary"></i>
-                                    @elseif(str_contains($facility, 'Bar'))
-                                    <i class="fas fa-glass-martini text-danger"></i>
-                                    @elseif(str_contains($facility, 'Layanan Kamar'))
-                                    <i class="fas fa-concierge-bell text-secondary"></i>
-                                    @else
-                                    <i class="fas fa-check-circle text-secondary"></i>
-                                    @endif
-
+                            @if(str_contains($facility, 'Kolam Renang'))
+                                <i class="fas fa-swimming-pool text-primary"></i>
+                            @elseif(str_contains($facility, 'Restoran'))
+                                <i class="fas fa-utensils text-success"></i>
+                            @elseif(str_contains($facility, 'Spa'))
+                                <i class="fas fa-spa text-warning"></i>
+                            @elseif(str_contains($facility, 'Gym'))
+                                <i class="fas fa-dumbbell text-info"></i>
+                            @elseif(str_contains($facility, 'Parkir'))
+                                <i class="fas fa-parking text-dark"></i>
+                            @elseif(str_contains($facility, 'WiFi'))
+                                <i class="fas fa-wifi text-primary"></i>
+                            @elseif(str_contains($facility, 'Bar'))
+                                <i class="fas fa-glass-martini text-danger"></i>
+                            @elseif(str_contains($facility, 'Layanan Kamar'))
+                                <i class="fas fa-concierge-bell text-secondary"></i>
+                            @else
+                                <i class="fas fa-check-circle text-secondary"></i>
+                            @endif
                             <span class="ms-2">{{ trim($facility) }}</span>
                         </li>
                     @endforeach
@@ -89,12 +93,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-
-            <!-- Booking Form -->
-
         </div>
     </div>
 </div>

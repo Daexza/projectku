@@ -110,12 +110,19 @@
         @forelse ($pencarian as $item)
         <div class="col-md-4 mb-4">
             <div class="card shadow">
-                <img src="{{  $item->image_url }}" class="card-img-top" alt="{{ $item->name }}" style="height: 200px; object-fit: cover;">
+                <img src="{{ $item->image_url }}" class="card-img-top" alt="{{ $item->name }}" style="height: 200px; object-fit: cover;">
                 <div class="card-body">
                     <h5 class="card-title">{{ $item->name }}</h5>
                     <p class="card-text">{{ Str::limit($item->description, 50) }}</p>
                     <p><strong>Location:</strong> {{ $item->location }}</p>
-                    <p><strong>Price:</strong> ${{ number_format($item->price, 2) }}</p>
+                    <p>
+                        <strong>Price Start From:</strong>
+                        @if ($item->min_price)
+                            Rp {{ number_format($item->min_price, 0, ',', '.') }}
+                        @else
+                            N/A
+                        @endif
+                    </p>
                     <a href="{{ route('pencarian.show', $item->id) }}" class="btn btn-primary btn-sm">View Details</a>
                 </div>
             </div>
@@ -127,4 +134,5 @@
         @endforelse
     </div>
 </div>
+
 @endsection

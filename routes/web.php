@@ -93,6 +93,8 @@ Route::get('/', [DashboardController::class, 'index'])->name('home');
 
 Route::get('/booking', [BookingController::class, 'index'])->name('booking.index');
 Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
+Route::get('/booking/{room_id}', [BookingController::class, 'create'])->name('booking.create');
+
 
 Route::get('/pencarian/room/{id}', [PencarianController::class, 'showRoom'])->name('pencarian.room');
 Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
