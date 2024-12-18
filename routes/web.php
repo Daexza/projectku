@@ -54,7 +54,7 @@ Route::get('/admin/dashboard', [UserController::class, 'adminDashboard'])->name(
 Route::get('/manager/dashboard', [UserController::class, 'managerDashboard'])->name('manager.dashboard');
 
 // Route untuk dashboard user
-Route::get('/user/dashboard', [UserController::class, 'userDashboard'])->name('dashboard.index');
+Route::get('/user/dashboard', [UserController::class, 'userDashboard'])->name('pencarian.index');
 // Middleware untuk memeriksa apakah pengguna sudah login
 Route::middleware(['auth'])->group(function () {
     // Route yang hanya dapat diakses oleh pengguna yang sudah login

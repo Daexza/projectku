@@ -95,7 +95,9 @@
             <div class="hero-text">
                 <h1>BExplore</h1>
                 <p>Explore Attractions, Find Perfect Stays with BExplore!</p>
-                <button class="btn btn-primary">BExplore Accommodations</button>
+                <button class="btn btn-primary" onclick="window.location.href='{{ route('login') }}'">
+    Explore Accommodations
+</button>
             </div>
         </div>
         <div class="recommendation-section">
