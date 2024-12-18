@@ -15,8 +15,11 @@ class BookingController extends Controller
         // Ambil data booking dengan relasi ke accommodation
         $bookings = Booking::with('accommodation')->get();
 
+    // Ambil semua data dari tabel 'pencarian'
+    $accommodations = \DB::table('pencarian')->get();
+
         // Tampilkan halaman daftar booking
-        return view('booking.index', compact('bookings'));
+        return view('booking.index', compact('bookings', 'accommodations'));
     }
 
     /**

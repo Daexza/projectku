@@ -8,6 +8,42 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
+   <!-- Form Add Booking -->
+<div class="card mb-4">
+    <div class="card-header">Add New Booking</div>
+    <div class="card-body">
+        <form action="{{ route('booking.store') }}" method="POST">
+            @csrf
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <label for="accommodation_id">Accommodation</label>
+                    <select name="accommodation_id" class="form-control" required>
+                        <option value="">-- Select Accommodation --</option>
+                        @foreach($accommodations as $accommodation)
+                            <option value="{{ $accommodation->id }}">{{ $accommodation->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" class="form-control" required>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="form-control" required>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="date">Booking Date</label>
+                    <input type="date" name="date" class="form-control" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Add Booking</button>
+        </form>
+    </div>
+</div>
+
+
+    <!-- Table Booking List -->
     <table class="table table-bordered mt-4">
         <thead>
             <tr>
