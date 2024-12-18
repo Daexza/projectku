@@ -27,7 +27,7 @@
                             @endforeach
                         </select>
                     </div>
-            
+
                     <div class="col-md-3 mb-3">
                         <label for="name">Name</label>
                         <input type="text" name="name" class="form-control" required>
@@ -40,7 +40,7 @@
                         <label for="date">Booking Date</label>
                         <input type="date" name="date" class="form-control" required>
                     </div>
-            
+
                     @if(isset($room))
                         <input type="hidden" name="room_id" value="{{ $room->room_id }}">
                         <div class="col-md-3 mb-3">
@@ -51,7 +51,7 @@
                 </div>
                 <button type="submit" class="btn btn-success">Add Booking</button>
             </form>
-            
+
         </div>
     </div>
 

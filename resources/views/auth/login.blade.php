@@ -1,110 +1,128 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Login</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="icon" type="image/png" href="asset/images/icons/favicon.ico"/>
-    <link rel="stylesheet" type="text/css" href="asset/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="asset/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="asset/fonts/iconic/css/material-design-iconic-font.min.css">
-    <link rel="stylesheet" type="text/css" href="asset/vendor/animate/animate.css">
-    <link rel="stylesheet" type="text/css" href="asset/vendor/css-hamburgers/hamburgers.min.css">
-    <link rel="stylesheet" type="text/css" href="asset/vendor/animsition/css/animsition.min.css">
-    <link rel="stylesheet" type="text/css" href="asset/vendor/select2/select2.min.css">
-    <link rel="stylesheet" type="text/css" href="asset/vendor/daterangepicker/daterangepicker.css">
-    <link rel="stylesheet" type="text/css" href="asset/css/util.css">
-    <link rel="stylesheet" type="text/css" href="asset/css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        .bg {
+            background-image: url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/479121921.jpg?k=60615d0bedc0821238464b035f543726343a5953275e85ec97f25940d939cd9e&o=&hp=1');
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+        .login-container {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 35%;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 3rem;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .login-container h2 {
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+        .login-container .form-control {
+            margin-bottom: 1.5rem;
+        }
+        .login-container .btn-primary {
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            border: none;
+            padding: 0.75rem;
+            font-size: 1rem;
+        }
+        .login-container .social-login {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1.5rem;
+        }
+        .login-container .social-login a {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+        }
+        .login-container .social-login a.facebook {
+            background-color: #3b5998;
+        }
+        .login-container .social-login a.twitter {
+            background-color: #1da1f2;
+        }
+        .login-container .social-login a.google {
+            background-color: #db4437;
+        }
+        .bg-text {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 2.5rem;
+            text-align: left;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            max-width: 50%;
+        }
+    </style>
 </head>
 <body>
-
-    <div class="limiter">
-        <div class="container-login100" style="background-image: url('asset/images/bg-01.jpg');">
-            <div class="text-overlay">
-                <h1>Explore Attractions, Find Perfect Stays with BExplore!</h1>
+    <div class="bg">
+        <div class="bg-text">
+            Explore Attractions, Find Perfect Stays with BExplore!
+        </div>
+        <div class="login-container">
+            <h2>Login</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        <input type="email" class="form-control" id="email" placeholder="Type your email">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                        <input type="password" class="form-control" id="password" placeholder="Type your password">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <a href="#" class="text-decoration-none">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">LOGIN</button>
+            </form>
+            <div class="text-center mt-4">
+                <p>Or Sign Up Using</p>
+                <div class="social-login">
+                    <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="google"><i class="fab fa-google"></i></a>
+                </div>
             </div>
-            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-                <form class="login100-form validate-form" action="{{ route('login.post') }}" method="POST">
-                    @csrf <!-- Token CSRF untuk keamanan -->
-                    <span class="login100-form-title p-b-49">
-                        Login
-                    </span>
-
-                    <!-- Input Email -->
-                    <div class="wrap-input100 validate-input m-b-23" data-validate="Email is required">
-                        <span class="label-input100">Email</span>
-                        <input class="input100" type="email" name="email" placeholder="Type your email" required>
-                        <span class="focus-input100" data-symbol="&#xf206;"></span>
-                    </div>
-
-                    <!-- Input Password -->
-                    <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <span class="label-input100">Password</span>
-                        <input class="input100" type="password" name="password" placeholder="Type your password" required>
-                        <span class="focus-input100" data-symbol="&#xf190;"></span>
-                    </div>
-
-                    <div class="text-right p-t-8 p-b-31">
-                        <a href="#">
-                            Forgot password?
-                        </a>
-                    </div>
-
-                    <div class="container-login100-form-btn">
-                        <div class="wrap-login100-form-btn">
-                            <div class="login100-form-bgbtn"></div>
-                            <button class="login100-form-btn">
-                                Login
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="txt1 text-center p-t-54 p-b-20">
-                        <span>
-                            Or Sign Up Using
-                        </span>
-                    </div>
-
-                    <div class="flex-c-m">
-                        <a href="#" class="login100-social-item bg1">
-                            <i class="fa fa-facebook"></i>
-                        </a>
-
-                        <a href="#" class="login100-social-item bg2">
-                            <i class="fa fa-twitter"></i>
-                        </a>
-
-                        <a href="#" class="login100-social-item bg3">
-                            <i class="fa fa-google"></i>
-                        </a>
-                    </div>
-
-                    <div class="flex-col-c p-t-100">
-                        <span class="txt1 p-b-17">
-                            Don't have an account?
-                        </span>
-
-                        <a href="{{ route('register') }}" class="txt2">
-                            Sign Up
-                        </a>
-                    </div>
-                </form>
+            <div class="text-center mt-4">
+                <p>Don't have an account?</p>
+                <a href="{{ route('register') }}" class="txt2"> SIGN UP</a>
             </div>
         </div>
     </div>
-
-    <div id="dropDownSelect1"></div>
-
-    <script src="asset/vendor/jquery/jquery-3.2.1.min.js"></script>
-    <script src="asset/vendor/animsition/js/animsition.min.js"></script>
-    <script src="asset/vendor/bootstrap/js/popper.js"></script>
-    <script src="asset/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="asset/vendor/select2/select2.min.js"></script>
-    <script src="asset/vendor/daterangepicker/moment.min.js"></script>
-    <script src="asset/vendor/daterangepicker/daterangepicker.js"></script>
-    <script src="asset/vendor/countdowntime/countdowntime.js"></script>
-    <script src="asset/js/main.js"></script>
-
 </body>
 </html>
