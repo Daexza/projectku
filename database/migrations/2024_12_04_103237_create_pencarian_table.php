@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -8,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pencarian', function (Blueprint $table) {
-            $table->id(); // Kolom id dengan tipe bigint unsigned
+            $table->id(); // Primary key
             $table->string('name', 100);
             $table->text('description')->nullable();
             $table->decimal('latitude', 10, 7)->nullable();
@@ -18,6 +19,8 @@ return new class extends Migration
             $table->text('location')->nullable();
             $table->decimal('rating', 2, 1)->default(0);
             $table->string('image_url')->nullable();
+            $table->date('available_from')->nullable();
+            $table->date('available_to')->nullable();
             $table->timestamps();
         });
     }

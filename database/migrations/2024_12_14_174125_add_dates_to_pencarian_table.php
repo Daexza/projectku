@@ -10,18 +10,33 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up()
-{
-    Schema::table('pencarian', function (Blueprint $table) {
-        $table->date('available_from')->nullable();
-        $table->date('available_to')->nullable();
-    });
-}
+    {
+        Schema::table('pencarian', function (Blueprint $table) {
+            // Periksa apakah kolom 'available_from' sudah ada
+            if (!Schema::hasColumn('pencarian', 'available_from')) {
+                $table->date('available_from')->nullable();
+            }
+            
+            // Periksa apakah kolom 'available_to' sudah ada
+            if (!Schema::hasColumn('pencarian', 'available_to')) {
+                $table->date('available_to')->nullable();
+            }
+        });
+    }
 
-public function down()
-{
-    Schema::table('pencarian', function (Blueprint $table) {
-        $table->dropColumn(['available_from', 'available_to']);
-    });
-}
-
+    /**
+     * Reverse the migrations.
+     */
+    public function down()
+    {
+        Schema::table('pencarian', function (Blueprint $table) {
+            // Hapus kolom hanya jika kolom tersebut ada
+            if (Schema::hasColumn('pencarian', 'available_from')) {
+                $table->dropColumn('available_from');
+            }
+            if (Schema::hasColumn('pencarian', 'available_to')) {
+                $table->dropColumn('available_to');
+            }
+        });
+    }
 };

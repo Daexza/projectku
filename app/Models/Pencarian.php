@@ -9,7 +9,7 @@ class Pencarian extends Model
     use HasFactory;
 
     protected $table = 'pencarian';
-    protected $primaryKey = 'pencarian_id';
+    // protected $primaryKey = 'pencarian_id';
     protected $fillable = [
         'name', 
         'description', 
@@ -25,8 +25,9 @@ class Pencarian extends Model
         'available_to',   // Tambahkan kolom ini
     ];
         public $timestamps = false; // Nonaktifkan timestamps (karena sudah diatur manual)
-    public function rooms()
-    {
-        return $this->hasMany(Room::class, 'pencarian_id', 'id');
-    }
+        public function rooms()
+{
+    return $this->hasMany(Room::class, 'pencarian_id', 'id');
+}
+
 }

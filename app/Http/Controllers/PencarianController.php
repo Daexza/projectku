@@ -49,13 +49,11 @@ class PencarianController extends Controller
     }
 
     public function showRoom($id)
-{
-    // Ambil pencarian berdasarkan ID dan muat relasi rooms
-    $pencarian = Pencarian::with('rooms')->findOrFail($id);
-
-    // Kirim data rooms yang terkait ke view
-    $rooms = $pencarian->rooms;
-
-    return view('pencarian.room', compact('pencarian', 'rooms'));
-}
+    {
+        $pencarian = Pencarian::with('rooms')->findOrFail($id);
+        $rooms = $pencarian->rooms;
+    
+        return view('pencarian.room', compact('pencarian', 'rooms'));
+    }
+    
 }

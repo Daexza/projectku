@@ -10,16 +10,18 @@ return new class extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id('room_id'); // Primary key
-            $table->foreignId('pencarian_id') // Foreign key
-                  ->constrained('pencarian') // Mengacu ke tabel 'pencarian'
-                  ->onDelete('cascade');
+            $table->unsignedBigInteger('pencarian_id'); // Foreign key
+            $table->foreign('pencarian_id')
+                  ->references('id')
+                  ->on('pencarian')
+                  ->onDelete('cascade'); // Relasi ke tabel pencarian
             $table->string('room_number', 50);
             $table->enum('room_type', ['single', 'double', 'suite']);
             $table->decimal('price_per_night', 10, 2);
             $table->text('facilities')->nullable();
             $table->timestamps();
         });
-    }        
+    }
 
     public function down(): void
     {
