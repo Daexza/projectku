@@ -91,7 +91,7 @@
     </nav>
     <div class="main-content">
         <div class="hero-section">
-            <img alt="Beautiful beach resort with overwater bungalows and a clear blue sky" height="600" src="https://storage.googleapis.com/a1aa/image/uP3MqAfoj12rZSOJvcSnzPIt8KM0wLseF9SjOaKXTscGDA8TA.jpg" width="1200"/>
+            <img alt="Beautiful beach resort with overwater bungalows and a clear blue sky" height="600" src="asset/images/bg-01.jpg" width="1200"/>
             <div class="hero-text">
                 <h1>BExplore</h1>
                 <p>Explore Attractions, Find Perfect Stays with BExplore!</p>
@@ -107,7 +107,6 @@
                         <div class="card-body">
                             <h5 class="card-title">Luxury Suite</h5>
                             <p class="card-text">Experience the ultimate luxury with our top-rated suite.</p>
-                            <a class="btn btn-primary" href="#">Book Now</a>
                         </div>
                     </div>
                 </div>
@@ -117,7 +116,6 @@
                         <div class="card-body">
                             <h5 class="card-title">Deluxe Room</h5>
                             <p class="card-text">Enjoy a comfortable stay in our deluxe room with modern amenities.</p>
-                            <a class="btn btn-primary" href="#">Book Now</a>
                         </div>
                     </div>
                 </div>
@@ -127,7 +125,6 @@
                         <div class="card-body">
                             <h5 class="card-title">City View Room</h5>
                             <p class="card-text">Relax in our spacious room with a stunning view of the city.</p>
-                            <a class="btn btn-primary" href="#">Book Now</a>
                         </div>
                     </div>
                 </div>
@@ -140,7 +137,6 @@
                         <div class="card-body">
                             <h5 class="card-title">Special Discount</h5>
                             <p class="card-text">Get a special discount on your first booking.</p>
-                            <a class="btn btn-primary" href="#">Book Now</a>
                         </div>
                     </div>
                 </div>
@@ -150,7 +146,6 @@
                         <div class="card-body">
                             <h5 class="card-title">Complimentary Breakfast</h5>
                             <p class="card-text">Enjoy a complimentary breakfast with your stay.</p>
-                            <a class="btn btn-primary" href="#">Book Now</a>
                         </div>
                     </div>
                 </div>
@@ -160,7 +155,6 @@
                         <div class="card-body">
                             <h5 class="card-title">Free Night Stay</h5>
                             <p class="card-text">Book 3 nights and get the 4th night free.</p>
-                            <a class="btn btn-primary" href="#">Book Now</a>
                         </div>
                     </div>
                 </div>
