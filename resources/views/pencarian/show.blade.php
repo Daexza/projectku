@@ -19,7 +19,7 @@
                         </div>
                         <div class="text-end">
                             <h4 class="text-danger fw-bold">
-                                Rp {{ number_format($pencarian->price, 0, ',', '.') }}
+                               from  Rp {{ number_format($pencarian->price, 0, ',', '.') }}
                             </h4>
                             <a href="{{ route('pencarian.room', $pencarian->id) }}" class="btn btn-warning">Select Room</a>
                         </div>

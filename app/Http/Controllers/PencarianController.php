@@ -52,8 +52,8 @@ class PencarianController extends Controller
     {
         $pencarian = Pencarian::with('rooms')->findOrFail($id);
         $rooms = $pencarian->rooms;
-    
+
         return view('pencarian.room', compact('pencarian', 'rooms'));
     }
-    
+
 }

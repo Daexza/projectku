@@ -17,5 +17,5 @@ class Room extends Model
     {
         return $this->belongsTo(Pencarian::class, 'pencarian_id', 'id');
     }
-    
+
 }
