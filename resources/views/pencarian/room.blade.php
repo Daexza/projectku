@@ -1,12 +1,10 @@
 @extends('layout.home')
 
 @section('content')
-
 <div class="container mt-5">
     <h1 class="text-center">{{ $pencarian->name }}</h1>
     <p class="text-center">{{ $pencarian->description }}</p>
 
-    <!-- Tampilkan gambar utama -->
     <div class="text-center mb-4">
         <img src="{{ $pencarian->image_url }}" alt="{{ $pencarian->name }}" class="img-fluid" style="height: 400px; object-fit: cover;">
     </div>
@@ -20,7 +18,7 @@
                         <p>Type: {{ ucfirst($room->room_type) }}</p>
                         <p>Price: Rp {{ number_format($room->price_per_night, 0, ',', '.') }}</p>
                         <p>Facilities: {{ $room->facilities }}</p>
-                        <a href="{{ route('booking.index') }}" class="btn btn-primary">Book Now</a>
+                        <a href="{{ route('booking.index', ['room_id' => $room->room_id]) }}" class="btn btn-primary">Book Now</a>
                     </div>
                 </div>
             </div>
@@ -29,5 +27,4 @@
         @endforelse
     </div>
 </div>
-
 @endsection

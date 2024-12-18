@@ -15,6 +15,7 @@ return new class extends Migration
                   ->references('id')
                   ->on('pencarian')
                   ->onDelete('cascade'); // Relasi ke tabel pencarian
+
             $table->string('room_number', 50);
             $table->enum('room_type', ['single', 'double', 'suite']);
             $table->decimal('price_per_night', 10, 2);
@@ -25,6 +26,11 @@ return new class extends Migration
 
     public function down(): void
     {
+        Schema::table('rooms', function (Blueprint $table) {
+            // Hapus foreign key constraint sebelum menghapus tabel
+            $table->dropForeign(['pencarian_id']);
+        });
+
         Schema::dropIfExists('rooms');
     }
 };

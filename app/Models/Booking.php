@@ -6,12 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
 {
-    protected $table = 'bookings'; // Nama tabel
-    protected $fillable = ['accommodation_id', 'name', 'email', 'date'];
+    protected $table = 'bookings';
+    protected $fillable = ['accommodation_id', 'room_id', 'name', 'email', 'date'];
 
-    // Relasi ke tabel pencarian
+    public function room()
+    {
+        return $this->belongsTo(Room::class, 'room_id', 'room_id');
+    }
+
     public function accommodation()
     {
-        return $this->belongsTo(Pencarian::class, 'accommodation_id');
+        return $this->belongsTo(Pencarian::class, 'accommodation_id', 'id');
     }
 }

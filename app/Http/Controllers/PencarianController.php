@@ -50,10 +50,13 @@ class PencarianController extends Controller
 
     public function showRoom($id)
     {
-        $pencarian = Pencarian::with('rooms')->findOrFail($id);
+        $pencarian = Pencarian::with(['rooms' => function ($query) {
+            // Ambil hanya room yang belum dibooking
+            $query->whereDoesntHave('bookings');
+        }])->findOrFail($id);
+    
         $rooms = $pencarian->rooms;
-
+    
         return view('pencarian.room', compact('pencarian', 'rooms'));
     }
-
-}
+}    
