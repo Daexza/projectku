@@ -37,7 +37,7 @@ class LoginController extends Controller
             // Redirect berdasarkan role
             switch ($user->role) {
                 case 'admin':
-                    return redirect()->route('dashboard.admin')->with('success', 'Login berhasil sebagai Admin!');
+                    return redirect()->route('admin.dashboard')->with('success', 'Login berhasil sebagai Admin!');
                 case 'manager':
                     return redirect()->route('manager.dashboard')->with('success', 'Login berhasil sebagai Manager!');
                 case 'user':

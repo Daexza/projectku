@@ -7,8 +7,8 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PencarianController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ManagerController;
-
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AccommodationController;
 
 
 
@@ -52,31 +52,13 @@ Route::get('/admin/dashboard', [UserController::class, 'adminDashboard'])->name(
 
 // routes/web.php
 
-// routes/web.php
-Route::get('/manager/dashboard', [ManagerController::class, 'dashboard'])
-    ->name('manager.dashboard');
 
-Route::get('/manager/daftar-penginapan', [ManagerController::class, 'daftarPenginapan'])
-    ->name('manager.daftar-penginapan');
 
-    Route::get('/manager/tambah-penginapan', [ManagerController::class, 'tambahPenginapan'])
-    ->name('manager.tambah-penginapan');
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 
-Route::post('/manager/simpan-penginapan', [ManagerController::class, 'simpanPenginapan'])
-    ->name('manager.simpan-penginapan');
-
-Route::get('/manager/customer-list', [ManagerController::class, 'customerList'])
-    ->name('manager.customer-list');
-
-// Tambahan route edit dan hapus
-Route::get('/manager/edit-penginapan/{id}', [ManagerController::class, 'editPenginapan'])
-    ->name('manager.edit-penginapan');
-
-Route::put('/manager/update-penginapan/{id}', [ManagerController::class, 'updatePenginapan'])
-    ->name('manager.update-penginapan');
-
-Route::delete('/manager/hapus-penginapan/{id}', [ManagerController::class, 'hapusPenginapan'])->name('manager.hapus-penginapan');
-
+// Accommodation routes
+Route::get('/accommodations', [AccommodationController::class, 'index'])->name('accommodation.index');// User routes
+Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
 
 
 // Route untuk dashboard user
