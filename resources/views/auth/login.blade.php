@@ -90,19 +90,29 @@
         </div>
         <div class="login-container">
             <h2>Login</h2>
-            <form>
+            <form action="{{ route('login') }}" method="POST">
+                @csrf
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                        </div>
+                @endif
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fas fa-user"></i></span>
-                        <input type="email" class="form-control" id="email" placeholder="Type your email">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Type your email" required>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                        <input type="password" class="form-control" id="password" placeholder="Type your password">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Type your password" required>
                     </div>
                 </div>
                 <div class="d-flex justify-content-between align-items-center mb-3">
