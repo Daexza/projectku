@@ -10,18 +10,20 @@ use Illuminate\Support\Facades\Log;
 
 class RegisterController extends Controller
 {
+    // Show the registration form
     public function showRegistrationForm()
     {
         return view('auth.register'); // Ensure this view has a role selection
     }
 
+    // Handle the registration
     public function register(Request $request)
     {
         // Validate the incoming request data
         $validator = Validator::make($request->all(), [
             'full_name' => 'required|string|min:2|max:100',
             'phone_number' => 'nullable|string|max:20',
-            'address' => 'nullable|string',
+            'address' => 'nullable|string|max:255', // Added max length for address
             'email' => 'required|email|unique:users|max:100',
             'password' => 'required|string|min:8|confirmed',
             'terms' => 'accepted',
