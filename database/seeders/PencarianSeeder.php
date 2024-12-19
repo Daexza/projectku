@@ -57,7 +57,7 @@ class PencarianSeeder extends Seeder
                 'phone_number' => '0274581234',
                 'facilities' => 'Pusat kebugaran, Kolam renang, Restoran',
                 'rating' => 4.9,
-                'image_url' => 'https://indonesia.tripcanvas.co/id/wp-content/uploads/sites/2/2020/11/10-1-Villa-Padi-by-@zidantourandtravel.jpg',
+                'image_url' => 'https://i.dailymail.co.uk/i/pix/2012/09/02/article-2197240-14C14650000005DC-644_1024x615_large.jpg',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
                 'available_from' => Carbon::now()->toDateString(),

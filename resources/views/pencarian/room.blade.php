@@ -12,12 +12,15 @@
         </div>
 
         <!-- Loop berdasarkan tipe kamar -->
-        @foreach(['suite', 'deluxe', 'standard'] as $type)
+        @foreach(['Suite', 'Deluxe', 'Standard'] as $type)
             @php
-                $filteredRooms = $rooms->where('room_type', $type);
+                // Filter kamar berdasarkan tipe
+                $filteredRooms = $rooms->filter(function ($room) use ($type) {
+                    return strtolower($room->room_type) === strtolower($type);
+                });
             @endphp
 
-            @if($filteredRooms->count() > 0)
+            @if($filteredRooms->isNotEmpty())
                 <!-- Judul Tipe Kamar -->
                 <h3 class="mt-4 text-capitalize">{{ ucfirst($type) }} Rooms</h3>
                 <div class="row">

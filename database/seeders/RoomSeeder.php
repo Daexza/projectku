@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Room;
-use Illuminate\Support\Facades\DB;
 
 class RoomSeeder extends Seeder
 {
@@ -14,30 +13,33 @@ class RoomSeeder extends Seeder
 
             // Hotel The Phoenix Yogyakarta (ID 1)
             [
+                'room_id' => 1,
                 'pencarian_id' => 1,
                 'room_number' => '101',
                 'room_type' => 'Suite',
-                'price_per_night' => 250.00,
+                'price_per_night' => 1500000, // Harga dalam Rupiah
                 'facilities' => 'King Bed, Ocean View, Balcony',
                 'image_url' => 'https://www.lottehotel.com/content/dam/lotte-hotel/lotte/seoul/accommodation/executive-tower/suite/presidential-suite-room/181026-49-2000-roo-LTSE.jpg.thumb.1920.1920.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
+                'room_id' => 2,
                 'pencarian_id' => 1,
                 'room_number' => '102',
                 'room_type' => 'Deluxe',
-                'price_per_night' => 200.00,
+                'price_per_night' => 1200000,
                 'facilities' => 'Queen Bed, Garden View',
                 'image_url' => 'https://pix10.agoda.net/hotelImages/3008331/-1/5a32f6b96a79e9387bf046b2befc4def.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
+                'room_id' => 3,
                 'pencarian_id' => 1,
                 'room_number' => '103',
                 'room_type' => 'Standard',
-                'price_per_night' => 150.00,
+                'price_per_night' => 900000,
                 'facilities' => 'Double Bed, City View',
                 'image_url' => 'https://dailyhotels.id/wp-content/uploads/2021/03/Standard-Room-e1617073694126.jpg',
                 'created_at' => now(),
@@ -46,30 +48,33 @@ class RoomSeeder extends Seeder
 
             // Hyatt Regency Yogyakarta (ID 2)
             [
+                'room_id' => 4,
                 'pencarian_id' => 2,
                 'room_number' => '201',
                 'room_type' => 'Suite',
-                'price_per_night' => 300.00,
+                'price_per_night' => 1800000,
                 'facilities' => 'King Bed, Golf View, Balcony',
                 'image_url' => 'https://www.lottehotel.com/content/dam/lotte-hotel/lotte/seoul/accommodation/executive-tower/suite/presidential-suite-room/181026-49-2000-roo-LTSE.jpg.thumb.1920.1920.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
+                'room_id' => 5,
                 'pencarian_id' => 2,
                 'room_number' => '202',
                 'room_type' => 'Deluxe',
-                'price_per_night' => 220.00,
+                'price_per_night' => 1400000,
                 'facilities' => 'Queen Bed, Pool View',
                 'image_url' => 'https://pix10.agoda.net/hotelImages/3008331/-1/5a32f6b96a79e9387bf046b2befc4def.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
+                'room_id' => 6,
                 'pencarian_id' => 2,
                 'room_number' => '203',
                 'room_type' => 'Standard',
-                'price_per_night' => 180.00,
+                'price_per_night' => 1100000,
                 'facilities' => 'Double Bed, Garden View',
                 'image_url' => 'https://dailyhotels.id/wp-content/uploads/2021/03/Standard-Room-e1617073694126.jpg',
                 'created_at' => now(),
@@ -78,30 +83,33 @@ class RoomSeeder extends Seeder
 
             // Royal Ambarrukmo Yogyakarta (ID 3)
             [
+                'room_id' => 7,
                 'pencarian_id' => 3,
                 'room_number' => '301',
                 'room_type' => 'Suite',
-                'price_per_night' => 270.00,
+                'price_per_night' => 1700000,
                 'facilities' => 'King Bed, Heritage View',
                 'image_url' => 'https://www.lottehotel.com/content/dam/lotte-hotel/lotte/seoul/accommodation/executive-tower/suite/presidential-suite-room/181026-49-2000-roo-LTSE.jpg.thumb.1920.1920.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
+                'room_id' => 8,
                 'pencarian_id' => 3,
                 'room_number' => '302',
                 'room_type' => 'Deluxe',
-                'price_per_night' => 230.00,
+                'price_per_night' => 1300000,
                 'facilities' => 'Queen Bed, City View',
                 'image_url' => 'https://pix10.agoda.net/hotelImages/3008331/-1/5a32f6b96a79e9387bf046b2befc4def.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
+                'room_id' => 9,
                 'pencarian_id' => 3,
                 'room_number' => '303',
                 'room_type' => 'Standard',
-                'price_per_night' => 200.00,
+                'price_per_night' => 1000000,
                 'facilities' => 'Double Bed, Garden View',
                 'image_url' => 'https://dailyhotels.id/wp-content/uploads/2021/03/Standard-Room-e1617073694126.jpg',
                 'created_at' => now(),
@@ -110,42 +118,216 @@ class RoomSeeder extends Seeder
 
             // Melia Purosani Yogyakarta (ID 4)
             [
+                'room_id' => 10,
                 'pencarian_id' => 4,
                 'room_number' => '401',
                 'room_type' => 'Suite',
-                'price_per_night' => 280.00,
+                'price_per_night' => 2000000,
                 'facilities' => 'King Bed, Pool View, Spa Access',
-                'image_url' => 'hhttps://www.lottehotel.com/content/dam/lotte-hotel/lotte/seoul/accommodation/executive-tower/suite/presidential-suite-room/181026-49-2000-roo-LTSE.jpg.thumb.1920.1920.jpg',
+                'image_url' => 'https://www.lottehotel.com/content/dam/lotte-hotel/lotte/seoul/accommodation/executive-tower/suite/presidential-suite-room/181026-49-2000-roo-LTSE.jpg.thumb.1920.1920.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
+                'room_id' => 11,
                 'pencarian_id' => 4,
                 'room_number' => '402',
                 'room_type' => 'Deluxe',
-                'price_per_night' => 240.00,
+                'price_per_night' => 1500000,
                 'facilities' => 'Queen Bed, Balcony View',
                 'image_url' => 'https://pix10.agoda.net/hotelImages/3008331/-1/5a32f6b96a79e9387bf046b2befc4def.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
+                'room_id' => 12,
                 'pencarian_id' => 4,
                 'room_number' => '403',
                 'room_type' => 'Standard',
-                'price_per_night' => 210.00,
+                'price_per_night' => 1200000,
                 'facilities' => 'Double Bed, Garden View',
-                'image_url' => 'hhttps://dailyhotels.id/wp-content/uploads/2021/03/Standard-Room-e1617073694126.jpg',
+                'image_url' => 'https://dailyhotels.id/wp-content/uploads/2021/03/Standard-Room-e1617073694126.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+       // Amaris Hotel Malioboro (ID 5)
+       [
+        'room_id' => 13,
+        'pencarian_id' => 5,
+        'room_number' => '501',
+        'room_type' => 'Suite',
+        'price_per_night' => 1200000,
+        'facilities' => 'King Bed, City View',
+        'image_url' => 'https://www.lottehotel.com/content/dam/lotte-hotel/lotte/seoul/accommodation/executive-tower/suite/presidential-suite-room/181026-49-2000-roo-LTSE.jpg.thumb.1920.1920.jpg',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ],
+    [
+        'room_id' => 14,
+        'pencarian_id' => 5,
+        'room_number' => '502',
+        'room_type' => 'Deluxe',
+        'price_per_night' => 1000000,
+        'facilities' => 'Queen Bed, Garden View',
+        'image_url' => 'https://pix10.agoda.net/hotelImages/3008331/-1/5a32f6b96a79e9387bf046b2befc4def.jpg',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ],
+    [
+        'room_id' => 15,
+        'pencarian_id' => 5,
+        'room_number' => '503',
+        'room_type' => 'Standard',
+        'price_per_night' => 800000,
+        'facilities' => 'Double Bed, Pool View',
+        'image_url' => 'https://dailyhotels.id/wp-content/uploads/2021/03/Standard-Room-e1617073694126.jpg',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ],
 
-            // Hotel Lainnya Ditambahkan Secara Serupa...
-        ];
-            
-        
+    // Hotel Tentrem Yogyakarta (ID 6)
+    [
+        'room_id' => 16,
+        'pencarian_id' => 6,
+        'room_number' => '601',
+        'room_type' => 'Suite',
+        'price_per_night' => 2500000,
+        'facilities' => 'King Bed, Ocean View',
+        'image_url' => 'https://www.lottehotel.com/content/dam/lotte-hotel/lotte/seoul/accommodation/executive-tower/suite/presidential-suite-room/181026-49-2000-roo-LTSE.jpg.thumb.1920.1920.jpg',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ],
+    [
+        'room_id' => 17,
+        'pencarian_id' => 6,
+        'room_number' => '602',
+        'room_type' => 'Deluxe',
+        'price_per_night' => 1800000,
+        'facilities' => 'Queen Bed, Garden View',
+        'image_url' => 'https://pix10.agoda.net/hotelImages/3008331/-1/5a32f6b96a79e9387bf046b2befc4def.jpg',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ],
+    [
+        'room_id' => 18,
+        'pencarian_id' => 6,
+        'room_number' => '603',
+        'room_type' => 'Standard',
+        'price_per_night' => 1500000,
+        'facilities' => 'Double Bed, City View',
+        'image_url' => 'https://dailyhotels.id/wp-content/uploads/2021/03/Standard-Room-e1617073694126.jpg',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ],
 
-        // Insert data kamar ke database
-        Room::insert($rooms);
-    }
+    // Bali Villa with Garden View (ID 7)
+    [
+        'room_id' => 19,
+        'pencarian_id' => 7,
+        'room_number' => '701',
+        'room_type' => 'Suite',
+        'price_per_night' => 3000000,
+        'facilities' => 'King Bed, Garden View',
+        'image_url' => 'https://www.lottehotel.com/content/dam/lotte-hotel/lotte/seoul/accommodation/executive-tower/suite/presidential-suite-room/181026-49-2000-roo-LTSE.jpg.thumb.1920.1920.jpg',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ],
+    [
+        'room_id' => 20,
+        'pencarian_id' => 7,
+        'room_number' => '702',
+        'room_type' => 'Deluxe',
+        'price_per_night' => 2000000,
+        'facilities' => 'Queen Bed, Pool View',
+        'image_url' => 'https://pix10.agoda.net/hotelImages/3008331/-1/5a32f6b96a79e9387bf046b2befc4def.jpg',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ],
+    [
+        'room_id' => 21,
+        'pencarian_id' => 7,
+        'room_number' => '703',
+        'room_type' => 'Standard',
+        'price_per_night' => 1500000,
+        'facilities' => 'Double Bed, Garden View',
+        'image_url' => 'https://dailyhotels.id/wp-content/uploads/2021/03/Standard-Room-e1617073694126.jpg',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ],
+     // Bali Private Pool Villa (ID 8)
+     [
+        'room_id' => 22,
+        'pencarian_id' => 8,
+        'room_number' => '801',
+        'room_type' => 'Suite',
+        'price_per_night' => 3500000,
+        'facilities' => 'King Bed, Private Pool, Garden View',
+        'image_url' => 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/05/70/56/89/getlstd-property-photo.jpg?w=800&h=-1&s=1',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ],
+    [
+        'room_id' => 23,
+        'pencarian_id' => 8,
+        'room_number' => '802',
+        'room_type' => 'Deluxe',
+        'price_per_night' => 2500000,
+        'facilities' => 'Queen Bed, Balcony View',
+        'image_url' => 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/05/70/56/89/getlstd-property-photo.jpg?w=800&h=-1&s=1',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ],
+    [
+        'room_id' => 24,
+        'pencarian_id' => 8,
+        'room_number' => '803',
+        'room_type' => 'Standard',
+        'price_per_night' => 1800000,
+        'facilities' => 'Double Bed, City View',
+        'image_url' => 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/05/70/56/89/getlstd-property-photo.jpg?w=800&h=-1&s=1',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ],
+
+    // Nusa Dua Water Villa (ID 9)
+    [
+        'room_id' => 25,
+        'pencarian_id' => 9,
+        'room_number' => '901',
+        'room_type' => 'Suite',
+        'price_per_night' => 4000000,
+        'facilities' => 'King Bed, Ocean View, Private Deck',
+        'image_url' => 'https://cf.bstatic.com/xdata/images/hotel/max1280x900/291994082.jpg?k=0b4b1ad781f7c3bb8f491b0f2f3fabcc6b19c821330b1889d8c7767a1929822d&o=&hp=1',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ],
+    [
+        'room_id' => 26,
+        'pencarian_id' => 9,
+        'room_number' => '902',
+        'room_type' => 'Deluxe',
+        'price_per_night' => 3000000,
+        'facilities' => 'Queen Bed, Pool View',
+        'image_url' => 'https://cf.bstatic.com/xdata/images/hotel/max1280x900/291994082.jpg?k=0b4b1ad781f7c3bb8f491b0f2f3fabcc6b19c821330b1889d8c7767a1929822d&o=&hp=1',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ],
+    [
+        'room_id' => 27,
+        'pencarian_id' => 9,
+        'room_number' => '903',
+        'room_type' => 'Standard',
+        'price_per_night' => 2200000,
+        'facilities' => 'Double Bed, Garden View',
+        'image_url' => 'https://cf.bstatic.com/xdata/images/hotel/max1280x900/291994082.jpg?k=0b4b1ad781f7c3bb8f491b0f2f3fabcc6b19c821330b1889d8c7767a1929822d&o=&hp=1',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ],
+
+];
+
+// Insert data kamar ke database
+Room::insert($rooms);
 }
+}
+
