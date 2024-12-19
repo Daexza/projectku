@@ -56,10 +56,12 @@ Route::get('/admin/dashboard', [UserController::class, 'adminDashboard'])->name(
 
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 
-// Accommodation routes
-Route::get('/accommodations/create', [AccommodationController::class, 'create'])->name('accommodations.create');
-Route::get('/accommodations', [AccommodationController::class, 'index'])->name('accommodation.index');// User routes
-Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/accommodations', [AccommodationController::class, 'index'])->name('accommodation.index');
+    Route::get('/accommodations/create', [AccommodationController::class, 'create'])->name('accommodation.create');
+    Route::post('/accommodations', [AccommodationController::class, 'store'])->name('accommodation.store');
+});
+    Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
 
 
 // Route untuk dashboard user
