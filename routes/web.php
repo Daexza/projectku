@@ -8,7 +8,6 @@ use App\Http\Controllers\PencarianController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ManagerController;
-use App\Http\Controllers\ManagerController;
 
 
 
