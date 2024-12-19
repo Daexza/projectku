@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Booking; // Model Booking
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -10,7 +11,7 @@ class DashboardController extends Controller
     {
         // Data booking
         $bookings = Booking::latest()->limit(5)->get();
-        $bookings = \DB::table('bookings')->get();
+        $bookings = DB::table('bookings')->get();
         $bookings = Booking::with('accommodation')->get();  // Mengambil relasi dengan model Accommodation
 
         // Pesan selamat datang
@@ -19,4 +20,3 @@ class DashboardController extends Controller
         return view('dashboard.index', compact('bookings', 'welcomeMessage'));
     }
 }
-

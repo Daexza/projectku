@@ -28,7 +28,7 @@
                             </h4>
                             <a href="{{ route('pencarian.room', $pencarian->id) }}" class="btn btn-warning">Select Room</a>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -97,3 +97,5 @@
     </div>
 </div>
 @endsection
+
+
