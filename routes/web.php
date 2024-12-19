@@ -57,6 +57,7 @@ Route::get('/admin/dashboard', [UserController::class, 'adminDashboard'])->name(
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 
 // Accommodation routes
+Route::get('/accommodations/create', [AccommodationController::class, 'create'])->name('accommodations.create');
 Route::get('/accommodations', [AccommodationController::class, 'index'])->name('accommodation.index');// User routes
 Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
 
