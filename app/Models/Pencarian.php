@@ -11,15 +11,15 @@ class Pencarian extends Model
     protected $table = 'pencarian';
     // protected $primaryKey = 'pencarian_id';
     protected $fillable = [
-        'name', 
-        'description', 
-        'location', 
-        'image_url', 
-        'price', 
-        'latitude', 
-        'longitude', 
-        'facilities', 
-        'rating', 
+        'name',
+        'description',
+        'location',
+        'image_url',
+        'price',
+        'latitude',
+        'longitude',
+        'facilities',
+        'rating',
         'phone_number',
         'available_from', // Tambahkan kolom ini
         'available_to',   // Tambahkan kolom ini

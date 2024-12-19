@@ -15,7 +15,8 @@ class BookingSeeder extends Seeder
             'room_id' => 2, // Room ID yang ada
             'name' => 'John Doe',
             'email' => 'john@example.com',
-            'date' => now()->toDateString(),
+            'check_in' => now()->addDays(1)->toDateString(), // contoh check-in 1 hari dari sekarang
+            'check_out' => now()->addDays(3)->toDateString(), // contoh check-out 3 hari dari sekarang
         ]);
     }
 }

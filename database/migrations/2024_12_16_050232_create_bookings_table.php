@@ -19,7 +19,9 @@ return new class extends Migration
 
             $table->string('name');
             $table->string('email');
-            $table->date('date');
+            $table->date('check_in');
+            $table->date('check_out');
+            $table->decimal('total_price', 8, 2); // menambahkan kolom total_price
             $table->timestamps();
         });
     }
