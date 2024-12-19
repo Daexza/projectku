@@ -1,9 +1,8 @@
 <?php
 
-// app/Http/Controllers/AccommodationController.php
-
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Accommodation;
 use Illuminate\Http\Request;
 
@@ -12,16 +11,17 @@ class AccommodationController extends Controller
     public function index()
     {
         $accommodations = Accommodation::all(); // Fetch all accommodations
-        return view('accommodations.index', compact('accommodations')); // Return the view
+        return view('admin.accommodation.index', compact('accommodations'));
     }
 
     public function create()
     {
-        return view('accommodations.create');
+        return view('admin.accommodation.create'); // Return the view for creating accommodations
     }
 
     public function store(Request $request)
     {
+        // Validate the request data
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
@@ -29,8 +29,11 @@ class AccommodationController extends Controller
             'price' => 'required|numeric',
         ]);
 
+        // Create a new accommodation
         Accommodation::create($request->all());
-        return redirect()->route('accommodations.index')->with('success', 'Accommodation added successfully.');
+
+        // Redirect to the accommodations index page with a success message
+        return redirect()->route('admin.accommodation.index')->with('success', 'Accommodation created successfully.');
     }
 
     // Add other methods like edit, update, and destroy as needed
