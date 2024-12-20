@@ -10,6 +10,8 @@ class Room extends Model
 
     protected $table = 'rooms';
     protected $primaryKey = 'room_id';
+    public $incrementing = true;
+    protected $keyType = 'int';
 
     protected $fillable = ['pencarian_id', 'room_number', 'room_type', 'price_per_night', 'facilities'];
 

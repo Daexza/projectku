@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
-use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
-
 
 class BookingController extends Controller
 {
@@ -31,6 +28,8 @@ class BookingController extends Controller
         return view('booking.index', compact('bookings', 'accommodations', 'room'));
     }
 
+
+
     /**
      * Simpan data booking baru.
      */
@@ -42,22 +41,10 @@ class BookingController extends Controller
             'room_id' => 'required|integer|exists:rooms,room_id',
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'check_in' => 'required|date|after_or_equal:today',
-            'check_out' => 'required|date|after:check_in',
+            'date' => 'required|date|after_or_equal:today',
         ]);
 
-        // Hitung jumlah hari untuk booking
-        $startDate = \Carbon\Carbon::parse($validated['check_in']);
-        $endDate = \Carbon\Carbon::parse($validated['check_out']);
-        $days = $endDate->diffInDays($startDate);
-
-        // Ambil harga per malam dari room
-        $room = Room::find($validated['room_id']);
-        $room->setNights($days); // Tentukan jumlah malam
-        $totalPrice = $room->calculateTotalPrice(); // Hitung total harga
-
         // Simpan data booking
-        $validated['total_price'] = $totalPrice;
         Booking::create($validated);
 
         // Redirect dengan pesan sukses

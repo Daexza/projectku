@@ -70,7 +70,7 @@
                         <!-- Total Price -->
                         <div class="col-md-3 mb-3">
                             <label for="total_price">Total Price</label>
-                            <input type="text" class="form-control" value="Rp {{ $room ? number_format($room->calculateTotalPrice(), 2, ',', '.') : '0,00' }}" readonly>
+                            <input type="text" class="form-control" value="Rp {{ $room && request('start_date') && request('end_date') ? number_format($room->calculateTotalPrice(request('start_date'), request('end_date')), 2, ',', '.') : '0,00' }}" readonly>
                         </div>
                     </div>
 

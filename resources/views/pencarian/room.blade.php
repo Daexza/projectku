@@ -24,7 +24,7 @@
                 <!-- Judul Tipe Kamar -->
                 <h3 class="mt-4 text-capitalize">{{ ucfirst($type) }} Rooms</h3>
                 <div class="row">
-                    @foreach($filteredRooms as $room)
+                    @foreach($filteredRooms as $room) 
                         <div class="col-md-4 mb-3">
                             <div class="card shadow-sm">
                                 <!-- Gambar Kamar -->
