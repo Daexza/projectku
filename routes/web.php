@@ -111,6 +111,7 @@ Route::get('/pencarian/room/{id}', [PencarianController::class, 'showRoom'])->na
 Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
 Route::get('/pencarian/room/{id}', [PencarianController::class, 'showRoom'])->name('pencarian.room');
 Route::get('/pencarian/room/{id}', [PencarianController::class, 'showRoom'])->name('pencarian.room');
+Route::get('/update-room-prices', [PencarianController::class, 'updateRoomPrices']);
 
 
 Route::get('/hello', function () {

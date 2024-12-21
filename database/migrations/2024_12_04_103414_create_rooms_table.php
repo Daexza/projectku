@@ -17,7 +17,7 @@ return new class extends Migration
                   ->onDelete('cascade');
             $table->string('room_number', 50);
             $table->enum('room_type', ['single', 'double', 'suite', 'deluxe', 'standard']);
-            $table->decimal('price_per_night', 10, 2);
+            $table->decimal('price_per_night', 10, 2)->default(100000); // Default value
             $table->text('facilities')->nullable();
             $table->string('image_url')->nullable(); // Tambahkan kolom untuk URL gambar
             $table->timestamps();

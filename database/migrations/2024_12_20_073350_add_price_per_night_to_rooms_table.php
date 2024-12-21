@@ -9,10 +9,10 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('rooms', function (Blueprint $table) {
-            $table->decimal('price_per_night', 10, 2)->after('room_type');
+            $table->decimal('price_per_night', 10, 2)->default(100000)->after('room_type');
         });
     }
     

@@ -51,15 +51,32 @@ class PencarianController extends Controller
 
 
 
-    public function showRoom($id)
-    {
-        $pencarian = Pencarian::with(['rooms' => function ($query) {
-            // Ambil hanya room yang belum dibooking
-            $query->whereDoesntHave('bookings');
-        }])->findOrFail($id);
+public function showRoom($id)
+{
+    $pencarian = Pencarian::with(['rooms' => function ($query) {
+        $query->whereDoesntHave('bookings')
+              ->orderBy('price_per_night', 'asc'); // Sorting by price
+    }])->findOrFail($id);
 
-        $rooms = $pencarian->rooms;
+    $rooms = $pencarian->rooms;
 
-        return view('pencarian.room', compact('pencarian', 'rooms'));
+    return view('pencarian.room', compact('pencarian', 'rooms'));
+}
+
+public function updateRoomPrices()
+{
+    // Update kolom price_per_night yang NULL atau 0 menjadi 100000
+    $updated = DB::table('rooms')
+        ->whereNull('price_per_night')
+        ->orWhere('price_per_night', '=', 0)
+        ->update(['price_per_night' => 100000]);
+
+    if ($updated) {
+        return response()->json(['message' => "{$updated} records updated successfully."]);
     }
+
+    return response()->json(['message' => "No records need to be updated."]);
+}
+
+
 }
