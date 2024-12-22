@@ -70,9 +70,21 @@ class BookingController extends Controller
         return redirect()->route('booking.index')->with('success', 'Booking berhasil dilakukan!');
     }
     
-    /**
-     * Hapus data booking.
-     */
+
+    // admin booking list
+    public function userList()
+    {
+        // Ambil semua booking dengan relasi pengguna
+        $bookings = Booking::with('pencarian')->get();
+    
+        // Ambil daftar pengguna yang telah melakukan booking
+        $users = $bookings->unique('email')->values();
+    
+        return view('admin.booking.user_list', compact('users', 'bookings'));
+    }
+
+
+
     public function destroy($id)
     {
         // Cari booking berdasarkan ID atau gagal

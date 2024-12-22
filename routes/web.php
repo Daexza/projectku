@@ -55,12 +55,7 @@ Route::get('/admin/dashboard', [UserController::class, 'adminDashboard'])->name(
 
 
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/accommodations', [AccommodationController::class, 'index'])->name('accommodation.index');
-    Route::get('/accommodations/create', [AccommodationController::class, 'create'])->name('accommodation.create');
-    Route::post('/accommodations', [AccommodationController::class, 'store'])->name('accommodation.store');
-});
+Route::get('/booking/user-list', [BookingController::class, 'userList'])->name('admin.booking.userList');
     Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
 
 
