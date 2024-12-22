@@ -83,6 +83,20 @@ class BookingController extends Controller
         return view('admin.booking.user_list', compact('users', 'bookings'));
     }
 
+// detail booking
+public function show($id)
+    {
+        // Cari booking berdasarkan ID
+        $booking = Booking::with(['pencarian', 'room'])->find($id);
+
+        // Jika booking tidak ditemukan, redirect atau tampilkan pesan error
+        if (!$booking) {
+            return redirect()->route('admin.booking.user_list')->with('error', 'Booking tidak ditemukan.');
+        }
+
+        return view('admin.booking.show', compact('booking'));
+    }
+
 
 
     public function destroy($id)

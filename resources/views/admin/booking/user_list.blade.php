@@ -9,6 +9,7 @@
                 <th>Nama</th>
                 <th>Email</th>
                 <th>Jumlah Booking</th>
+                <th>Detail Booking</th>
             </tr>
         </thead>
         <tbody>
@@ -17,10 +18,15 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $bookings->where('email', $user->email)->count() }}</td>
+                    <td>
+                    @foreach($bookings->where('email', $user->email) as $booking)
+                    <a href="{{ route('admin.booking.show', $booking->id) }}" class="btn btn-info btn-sm">Lihat Detail</a>
+                    @endforeach
+                    </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
-    <a href="{{ route('booking.index') }}" class="btn btn-primary">Kembali ke Daftar Booking</a>
+    <a href="{{ route('admin.users') }}" class="btn btn-primary">Kembali ke Daftar Pengguna</a>
 </div>
 @endsection

@@ -8,7 +8,6 @@ use App\Http\Controllers\PencarianController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AccommodationController;
 
 
 
@@ -52,11 +51,19 @@ Route::get('/admin/dashboard', [UserController::class, 'adminDashboard'])->name(
 
 // routes/web.php
 
-
-
+// Route untuk dashboard admin
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-Route::get('/booking/user-list', [BookingController::class, 'userList'])->name('admin.booking.userList');
-    Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
+
+// Route untuk daftar pengguna
+Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
+
+// Route untuk daftar pengguna yang telah melakukan booking
+Route::get('/booking/user-list', [BookingController::class, 'userList'])->name('admin.booking.user_list');
+
+// Route untuk detail booking
+Route::get('/booking/{id}', [BookingController::class, 'show'])->name('admin.booking.show');
+
+
 
 
 // Route untuk dashboard user
