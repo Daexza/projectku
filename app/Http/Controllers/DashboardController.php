@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -9,10 +10,8 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // Data booking
-        $bookings = Booking::latest()->limit(5)->get();
-        $bookings = DB::table('bookings')->get();
-        $bookings = Booking::with('accommodation')->get();  // Mengambil relasi dengan model Accommodation
+        // Data booking terbaru dengan relasi pencarian dan room
+        $bookings = Booking::with(['pencarian', 'room'])->get();
 
         // Pesan selamat datang
         $welcomeMessage = "Welcome to your dashboard!";
