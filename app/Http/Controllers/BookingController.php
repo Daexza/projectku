@@ -75,7 +75,7 @@ class BookingController extends Controller
         return view('booking.show', compact('booking'));
 
     }
-
+    
     public function show($id)
 {
     $booking = Booking::with(['pencarian', 'room'])->findOrFail($id);
