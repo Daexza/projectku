@@ -69,53 +69,64 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-success">Book Now</button>
-            </form>
+                <a href="{{ route('booking.show', $room->room_id) }}" class="btn btn-primary">Book Now</a>            </form>
         </div>
     </div>
     @endif
 
     <!-- Booking List Table -->
-    <div class="card shadow">
-        <div class="card-header fw-bold">Booking List</div>
-        <div class="card-body">
-            <table class="table table-bordered table-hover">
-                <thead class="table-light">
+<div class="card shadow">
+    <div class="card-header fw-bold">Booking List</div>
+    <div class="card-body">
+        <table class="table table-bordered table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>#</th>
+                    <th>Accommodation</th>
+                    <th>Room</th>
+                    <th>Room Type</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Check In</th>
+                    <th>Check Out</th>
+                    <th>Total Price</th>
+                    <th>Payment Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($bookings as $booking)
                     <tr>
-                        <th>#</th>
-                        <th>Accommodation</th>
-                        <th>Room</th>
-                        <th>Room Type</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Check In</th>
-                        <th>Check Out</th>
-                        <th>Total Price</th>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $booking->pencarian->name ?? '-' }}</td>
+                        <td>{{ $booking->room->room_number ?? '-' }}</td>
+                        <td>{{ ucfirst($booking->room->room_type ?? '-') }}</td>
+                        <td>{{ $booking->name }}</td>
+                        <td>{{ $booking->email }}</td>
+                        <td>{{ $booking->check_in }}</td>
+                        <td>{{ $booking->check_out }}</td>
+                        <td>Rp {{ number_format($booking->total_price, 0, ',', '.') }}</td>
+                        <td>{{ ucfirst($booking->payment_status) }}</td>
+                        <td>
+                            @if($booking->payment_status === 'pending')
+                                <a href="{{ route('booking.show', $booking->id) }}" class="btn btn-success btn-sm">
+                                    Pay Now
+                                </a>
+                            @else
+                                <span class="text-muted">No Action</span>
+                            @endif
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    @forelse ($bookings as $booking)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $booking->pencarian->name ?? '-' }}</td>
-                            <td>{{ $booking->room->room_number ?? '-' }}</td>
-                            <td>{{ ucfirst($booking->room->room_type ?? '-') }}</td>
-                            <td>{{ $booking->name }}</td>
-                            <td>{{ $booking->email }}</td>
-                            <td>{{ $booking->check_in }}</td>
-                            <td>{{ $booking->check_out }}</td>
-                            <td>Rp {{ number_format($booking->total_price, 0, ',', '.') }}</td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="9" class="text-center">No bookings found.</td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
-        </div>
+                @empty
+                    <tr>
+                        <td colspan="11" class="text-center">No bookings found.</td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
 </div>
+
 
 <script>
     // Hitung total harga saat tanggal check_in atau check_out berubah
