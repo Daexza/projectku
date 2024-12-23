@@ -86,61 +86,37 @@ public function getSnapToken($id)
 {
 
     $booking = Booking::findOrFail($id); // Pastikan Anda memiliki model Booking
-    $snapToken = $this->getSnapToken($booking); // Assuming you have a method to get the snap token
 
-    // Set Midtrans Configuration
-    /*Install Midtrans PHP Library (https://github.com/Midtrans/midtrans-php)
-composer require midtrans/midtrans-php
+    // Set konfigurasi Midtrans
+    \Midtrans\Config::$serverKey = 'SB-Mid-server-zAFSrS-J3B4NOlsP38YFHKpN'; // Gunakan Server Key Anda
+    \Midtrans\Config::$isProduction = false; // Mode Sandbox
+    \Midtrans\Config::$isSanitized = true;
+    \Midtrans\Config::$is3ds = true;
 
-Alternatively, if you are not using **Composer**, you can download midtrans-php library
-(https://github.com/Midtrans/midtrans-php/archive/master.zip), and then require
-the file manually.
-
-require_once dirname(__FILE__) . '/pathofproject/Midtrans.php'; */
-require_once dirname(__FILE__) . '/midtrans-php-master/Midtrans.php';
-
-
-//SAMPLE REQUEST START HERE
-
-// Set your Merchant Server Key
-\Midtrans\Config::$serverKey = 'SB-Mid-server-zAFSrS-J3B4NOlsP38YFHKpN';
-// Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-\Midtrans\Config::$isProduction = false;
-// Set sanitization on (default)
-\Midtrans\Config::$isSanitized = true;
-// Set 3DS transaction for credit card to true
-\Midtrans\Config::$is3ds = true;
-
-
-
+    // Parameter Snap
     $params = [
         'transaction_details' => [
-            'order_id' => $booking->id,
+            'order_id' => 'ORDER-' . $booking->id,
             'gross_amount' => $booking->total_price, // Total price from booking
         ],
         'customer_details' => [
             'name' => $booking->name,
             'email' => $booking->email,
-
         ],
-
         'item_details' => [
-            'id' => $booking -> room -> id,
-            'price per night' => $booking->room->price_per_night,
-            'check in' =>  $booking->check_in, // tanggal check in
-            'check out' => $booking->check_out,
-            'Total Price' => $booking -> total_price,
+            [
+                'id' => $booking->room->room_id,
+                'price' => $booking->room->price_per_night,
+                'quantity' => 1,
+                'name' => $booking->room->room_type,
+            ]
         ]
     ];
-
-Config::$serverKey = env('MIDTRANS_SERVER_KEY');
-Config::$isProduction = false;
-Config::$isSanitized = true;
-Config::$is3ds = true;
 
 try {
         // Dapatkan Snap Token dari Midtrans
         $snapToken = \Midtrans\Snap::getSnapToken($params); // Menghasilkan Snap Token
+        return response()->json(['snap_token' => $snapToken]);
     } catch (\Exception $e) {
         // Tangani error jika terjadi masalah saat mendapatkan Snap Token
         return response()->json(['error' => $e->getMessage()], 500);
@@ -148,7 +124,6 @@ try {
 
     // Kirim data snapToken dalam format JSON
     return response()->json(['snap_token' => $snapToken]);
-
 }
 
 
@@ -166,4 +141,42 @@ try {
         // Redirect dengan pesan sukses
         return redirect()->route('booking.index')->with('success', 'Booking berhasil dihapus!');
     }
+
+
+
+    public function handleNotification(Request $request)
+    {
+        \Midtrans\Config::$serverKey = config('services.midtrans.server_key');
+        \Midtrans\Config::$isProduction = false;
+        \Midtrans\Config::$isSanitized = true;
+        \Midtrans\Config::$is3ds = true;
+
+        $notification = new Notification();
+
+        $transactionStatus = $notification->transaction_status;
+        $orderId = $notification->order_id;
+
+        // Ambil ID Booking dari order_id
+        $bookingId = str_replace('ORDER-', '', $orderId);
+        $booking = Booking::find($bookingId);
+
+        if (!$booking) {
+            return response()->json(['message' => 'Booking not found'], 404);
+        }
+
+        // Perbarui status pembayaran berdasarkan status dari Midtrans
+        if (in_array($transactionStatus, ['capture', 'settlement'])) {
+            $booking->payment_status = 'success';
+        } elseif ($transactionStatus === 'pending') {
+            $booking->payment_status = 'pending';
+        } elseif (in_array($transactionStatus, ['deny', 'expire', 'cancel'])) {
+            $booking->payment_status = 'failed';
+        }
+
+        $booking->save();
+
+        return response()->json(['message' => 'Notification processed']);
+    }
 }
+
+

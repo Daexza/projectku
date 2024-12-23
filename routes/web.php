@@ -8,6 +8,8 @@ use App\Http\Controllers\PencarianController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MidtransController;
+
 
 
 
@@ -111,6 +113,9 @@ Route::post('/payment/notification', [BookingController::class, 'notificationHan
 Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
 Route::get('/booking/{id}/pay', [BookingController::class, 'pay'])->name('booking.pay');
 Route::get('/booking/{id}', [BookingController::class, 'show'])->name('booking.show');
+Route::post('/midtrans/notification', [MidtransController::class, 'handleNotification']);
+
+
 
 //Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
 // Route::get('/booking/{room_id}', [BookingController::class, 'create'])->name('booking.create');
