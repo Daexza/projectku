@@ -109,6 +109,8 @@ Route::get('/booking/{id}', [BookingController::class, 'show'])->name('booking.s
 Route::post('/booking/{id}/pay', [BookingController::class, 'pay'])->name('booking.pay'); // Snap Token
 Route::post('/payment/notification', [BookingController::class, 'notificationHandler']); // Notifikasi
 Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
+Route::post('/booking/pay/{id}', [BookingController::class, 'pay'])->name('booking.pay');
+Route::get('/booking/{id}', [BookingController::class, 'show'])->name('booking.show');
 
 //Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
 // Route::get('/booking/{room_id}', [BookingController::class, 'create'])->name('booking.create');
