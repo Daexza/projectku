@@ -68,11 +68,18 @@
                         <input type="text" class="form-control" value="Rp 0,00" readonly id="total_price">
                     </div>
                 </div>
+
+                <button type="submit" class="btn btn-success">Book Now</button>
             </form>
+<<<<<<< HEAD
             <a href="{{ route('booking.show', $room->room_id) }}" class="btn btn-primary">Book Now</a>
 
 
 
+=======
+        </div>
+    </div>
+>>>>>>> de3f4d08bd0081c0b8e3820cca756885ffdecef0
     @endif
 
 
