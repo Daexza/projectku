@@ -81,27 +81,66 @@ class BookingController extends Controller
     $booking = Booking::with(['pencarian', 'room'])->findOrFail($id);
     return view('booking.show', compact('booking'));
 }
-public function pay($id)
+
+public function getSnapToken($id)
 {
-    $booking = Booking::findOrFail($id);
+    $booking = Booking::findOrFail($id); // Pastikan Anda memiliki model Booking
+    $snapToken = $this->getSnapToken($booking); // Assuming you have a method to get the snap token
 
-// public function pay($id)
-// {
-//     $booking = Booking::findOrFail($id);
+    // Set Midtrans Configuration
+    /*Install Midtrans PHP Library (https://github.com/Midtrans/midtrans-php)
+composer require midtrans/midtrans-php
 
-    // Parameter Snap
+Alternatively, if you are not using **Composer**, you can download midtrans-php library
+(https://github.com/Midtrans/midtrans-php/archive/master.zip), and then require
+the file manually.
+
+require_once dirname(__FILE__) . '/pathofproject/Midtrans.php'; */
+require_once dirname(__FILE__) . '/midtrans-php-master/Midtrans.php';
+
+
+//SAMPLE REQUEST START HERE
+
+// Set your Merchant Server Key
+\Midtrans\Config::$serverKey = 'SB-Mid-server-zAFSrS-J3B4NOlsP38YFHKpN';
+// Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+\Midtrans\Config::$isProduction = false;
+// Set sanitization on (default)
+\Midtrans\Config::$isSanitized = true;
+// Set 3DS transaction for credit card to true
+\Midtrans\Config::$is3ds = true;
+
+
+
     $params = [
         'transaction_details' => [
-            'order_id' => 'BOOK-' . $booking->id,
-            'gross_amount' => $booking->total_price,
+            'order_id' => $booking->id,
+            'gross_amount' => $booking->total_price, // Total price from booking
         ],
         'customer_details' => [
             'name' => $booking->name,
             'email' => $booking->email,
+
         ],
+
+        'item_details' => [
+            'id' => $booking -> room -> id,
+            'price per night' => $booking->room->price_per_night,
+            'check in' =>  $booking->check_in, // tanggal check in
+            'check out' => $booking->check_out,
+            'Total Price' => $booking -> total_price,
+        ]
     ];
 
-    $snapToken = Snap::getSnapToken($params);
+try {
+        // Dapatkan Snap Token dari Midtrans
+        $snapToken = \Midtrans\Snap::getSnapToken($params); // Menghasilkan Snap Token
+    } catch (\Exception $e) {
+        // Tangani error jika terjadi masalah saat mendapatkan Snap Token
+        return response()->json(['error' => $e->getMessage()], 500);
+    }
+
+    // Kirim data snapToken dalam format JSON
     return response()->json(['snap_token' => $snapToken]);
 }
 

@@ -106,10 +106,10 @@ Route::get('/', [DashboardController::class, 'index'])->name('home');
 
 Route::get('/booking', [BookingController::class, 'index'])->name('booking.index');
 Route::get('/booking/{id}', [BookingController::class, 'show'])->name('booking.show'); // Detail Booking
-Route::post('/booking/{id}/pay', [BookingController::class, 'pay'])->name('booking.pay'); // Snap Token
+Route::post('/booking/{id}/get-snap-token', [BookingController::class, 'getSnapToken']);
 Route::post('/payment/notification', [BookingController::class, 'notificationHandler']); // Notifikasi
 Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
-Route::post('/booking/pay/{id}', [BookingController::class, 'pay'])->name('booking.pay');
+Route::get('/booking/{id}/pay', [BookingController::class, 'pay'])->name('booking.pay');
 Route::get('/booking/{id}', [BookingController::class, 'show'])->name('booking.show');
 
 //Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
