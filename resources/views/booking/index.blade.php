@@ -96,34 +96,43 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($bookings as $booking)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $booking->pencarian->name ?? '-' }}</td>
-                            <td>{{ $booking->room->room_number ?? '-' }}</td>
-                            <td>{{ ucfirst($booking->room->room_type ?? '-') }}</td>
-                            <td>{{ $booking->name }}</td>
-                            <td>{{ $booking->email }}</td>
-                            <td>{{ $booking->check_in }}</td>
-                            <td>{{ $booking->check_out }}</td>
-                            <td>Rp {{ number_format($booking->total_price, 0, ',', '.') }}</td>
-                            <td>{{ ucfirst($booking->payment_status) }}</td>
-                            <td>
-                                @if($booking->payment_status === 'pending')
-                                    <a href="{{ route('booking.show', $booking->id) }}" class="btn btn-success btn-sm">
-                                        Pay Now
-                                    </a>
-                                @else
-                                    <span class="text-muted">No Action</span>
-                                @endif
-                            </td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="11" class="text-center">No bookings found.</td>
-                        </tr>
-                    @endforelse
-                </tbody>
+    @forelse ($bookings as $booking)
+        <tr>
+            <td>{{ $loop->iteration }}</td>
+            <td>{{ $booking->pencarian->name ?? '-' }}</td>
+            <td>{{ $booking->room->room_number ?? '-' }}</td>
+            <td>{{ ucfirst($booking->room->room_type ?? '-') }}</td>
+            <td>{{ $booking->name }}</td>
+            <td>{{ $booking->email }}</td>
+            <td>{{ $booking->check_in }}</td>
+            <td>{{ $booking->check_out }}</td>
+            <td>Rp {{ number_format($booking->total_price, 0, ',', '.') }}</td>
+            <td>
+                @if($booking->payment_status === 'success')
+                    <span class="text-success fw-bold">Success</span>
+                @elseif($booking->payment_status === 'pending')
+                    <span class="text-warning fw-bold">Pending</span>
+                @else
+                    <span class="text-danger fw-bold">Failed</span>
+                @endif
+            </td>
+            <td>
+                @if($booking->payment_status === 'pending')
+                    <a href="{{ route('booking.show', $booking->id) }}" class="btn btn-success btn-sm">
+                        Pay Now
+                    </a>
+                @else
+                    <span class="text-muted">No Action</span>
+                @endif
+            </td>
+        </tr>
+    @empty
+        <tr>
+            <td colspan="11" class="text-center">No bookings found.</td>
+        </tr>
+    @endforelse
+</tbody>
+
             </table>
         </div>
     </div>
