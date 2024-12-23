@@ -8,8 +8,8 @@
         <div class="card-header fw-bold">Booking Details</div>
         <div class="card-body">
             <p><strong>Accommodation:</strong> {{ $booking->pencarian->name }}</p>
-            <p><strong>Room:</strong> {{ $booking->room->room_number }}</p>
-            <p><strong>Room Type:</strong> {{ ucfirst($booking->room->room_type) }}</p>
+                <p><strong>Room:</strong> {{ $booking->room->room_number }}</p>
+                <p><strong>Room Type:</strong> {{ ucfirst($booking->room->room_type) }}</p>
             <p><strong>Name:</strong> {{ $booking->name }}</p>
             <p><strong>Email:</strong> {{ $booking->email }}</p>
             <p><strong>Check In:</strong> {{ $booking->check_in }}</p>
@@ -21,8 +21,43 @@
         </div>
     </div>
 </div>
+  <script>
+                document.getElementById('pay-button').addEventListener('click', function () {
+                    // Kirim data form ke server
+                    fetch('{{ route('booking.store') }}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({
+                            pencarian_id: document.querySelector('[name="pencarian_id"]').value,
+                            room_id: document.querySelector('[name="room_id"]').value,
+                            name: document.querySelector('[name="name"]').value,
+                            email: document.querySelector('[name="email"]').value,
+                            check_in: document.querySelector('[name="check_in"]').value,
+                            check_out: document.querySelector('[name="check_out"]').value,
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Tampilkan Snap Popup
+                        window.snap.pay(data.snap_token, {
+                            onSuccess: function(result) {
+                                alert('Payment successful!');
+                                location.reload();
+                            },
+                            onPending: function(result) {
+                                alert('Payment pending.');
+                            },
+                            onError: function(result) {
+                                alert('Payment failed.');
+                            }
+                        });
+                    });
+                });
+            </script>
 
-<!-- Midtrans Snap.js -->
 <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
 <script>
     document.getElementById('pay-button').addEventListener('click', function () {

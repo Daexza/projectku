@@ -69,11 +69,25 @@
                     </div>
                 </div>
 
+
                 <a href="{{ route('booking.show', $room->room_id) }}" class="btn btn-primary">Book Now</a>            </form>
+
+                <button type="submit" class="btn btn-success">Book Now</button>
+            </form>
+
+            <a href="{{ route('booking.show', $room->room_id) }}" class="btn btn-primary">Book Now</a>
+
+
+
+
         </div>
     </div>
     @endif
 
+
+
+
+    
     <!-- Booking List Table -->
 <div class="card shadow">
     <div class="card-header fw-bold">Booking List</div>
