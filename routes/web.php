@@ -103,8 +103,17 @@ Route::resource('booking', BookingController::class);
 Route::get('/', [DashboardController::class, 'index'])->name('home');
 
 Route::get('/booking', [BookingController::class, 'index'])->name('booking.index');
+Route::get('/booking/{id}', [BookingController::class, 'show'])->name('booking.show'); // Detail Booking
+Route::post('/booking/{id}/pay', [BookingController::class, 'pay'])->name('booking.pay'); // Snap Token
+Route::post('/payment/notification', [BookingController::class, 'notificationHandler']); // Notifikasi
 Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
-Route::get('/booking/{room_id}', [BookingController::class, 'create'])->name('booking.create');
+
+//Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
+// Route::get('/booking/{room_id}', [BookingController::class, 'create'])->name('booking.create');
+// Route::get('/booking/{id}', [BookingController::class, 'show'])->name('booking.show'); // Detail booking
+// Route::post('/booking/{id}/pay', [BookingController::class, 'pay'])->name('booking.pay'); // Proses pembayaran
+// Route::post('/payment/notification', [BookingController::class, 'notificationHandler']); // Callback Midtrans
+
 
 
 Route::get('/pencarian/room/{id}', [PencarianController::class, 'showRoom'])->name('pencarian.room');

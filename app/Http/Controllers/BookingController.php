@@ -6,6 +6,11 @@ use App\Models\Booking;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Midtrans\Config;
+use Midtrans\Snap;
+use Midtrans\Notification;
+
+
 
 class BookingController extends Controller
 {
@@ -43,20 +48,20 @@ class BookingController extends Controller
                 'check_in' => 'required|date|after_or_equal:today',
                 'check_out' => 'required|date|after:check_in',
             ]);
-            
-        
-    
+
+
+
         // Hitung jumlah hari untuk booking
         $startDate = \Carbon\Carbon::parse($validated['check_in']);
         $endDate = \Carbon\Carbon::parse($validated['check_out']);
         $days = $endDate->diffInDays($startDate);
-    
+
         // Ambil harga kamar
         $room = \App\Models\Room::findOrFail($validated['room_id']);
         $totalPrice = $days * $room->price_per_night;
-    
+
         // Simpan data booking
-        Booking::create([
+        $booking = Booking::create([
             'pencarian_id' => $validated['pencarian_id'],
             'room_id' => $validated['room_id'],
             'name' => $validated['name'],
@@ -65,11 +70,66 @@ class BookingController extends Controller
             'check_out' => $validated['check_out'],
             'total_price' => $totalPrice,
         ]);
-    
+
         // Redirect ke halaman booking dengan pesan sukses
-        return redirect()->route('booking.index')->with('success', 'Booking berhasil dilakukan!');
+        return view('booking.show', compact('booking'));
+
     }
-    
+
+    public function show($id)
+{
+    $booking = Booking::with(['pencarian', 'room'])->findOrFail($id);
+    return view('booking.show', compact('booking'));
+}
+
+// public function pay($id)
+// {
+//     $booking = Booking::findOrFail($id);
+
+//     // Konfigurasi Midtrans
+//     Config::$serverKey = config('midtrans.server_key');
+//     Config::$isProduction = false;
+//     Config::$isSanitized = true;
+//     Config::$is3ds = true;
+
+//     // Parameter Snap
+//     $params = [
+//         'transaction_details' => [
+//             'order_id' => 'BOOK-' . $booking->id,
+//             'gross_amount' => $booking->total_price,
+//         ],
+//         'customer_details' => [
+//             'name' => $booking->name,
+//             'email' => $booking->email,
+//         ],
+//     ];
+
+//     $snapToken = Snap::getSnapToken($params);
+//     return response()->json(['snap_token' => $snapToken]);
+// }
+
+// public function notificationHandler(Request $request)
+// {
+//     $notif = new Notification();
+
+//     $transaction = $notif->transaction_status;
+//     $orderId = $notif->order_id;
+
+//     $bookingId = explode('-', $orderId)[1];
+//     $booking = Booking::find($bookingId);
+
+//     if ($transaction == 'settlement') {
+//         $booking->update(['payment_status' => 'paid']);
+//     } elseif ($transaction == 'pending') {
+//         $booking->update(['payment_status' => 'pending']);
+//     } elseif ($transaction == 'deny' || $transaction == 'cancel' || $transaction == 'expire') {
+//         $booking->update(['payment_status' => 'failed']);
+//     }
+
+//     return response()->json(['status' => 'success']);
+// }
+
+
     /**
      * Hapus data booking.
      */

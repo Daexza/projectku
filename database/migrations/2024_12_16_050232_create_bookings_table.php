@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date('check_in');
             $table->date('check_out');
             $table->decimal('total_price', 10, 2)->default(0); // Menambahkan nilai default
+            $table->string('payment_status')->default('pending');
             $table->timestamps();
         });
     }
