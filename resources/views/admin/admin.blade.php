@@ -21,7 +21,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.accommodation.index') }}">Accommodations</a>
+                        <a class="nav-link" href="{{ route('admin.booking.user_list') }}">Daftar Pengguna Booking</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.users') }}">Users</a>

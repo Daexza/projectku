@@ -72,63 +72,8 @@ class BookingController extends Controller
         ]);
 
         // Redirect ke halaman booking dengan pesan sukses
-        return view('booking.show', compact('booking'));
-
+        return redirect()->route('booking.index')->with('success', 'Booking berhasil dilakukan!');
     }
-
-    public function show($id)
-{
-    $booking = Booking::with(['pencarian', 'room'])->findOrFail($id);
-    return view('booking.show', compact('booking'));
-}
-
-// public function pay($id)
-// {
-//     $booking = Booking::findOrFail($id);
-
-//     // Konfigurasi Midtrans
-//     Config::$serverKey = config('midtrans.server_key');
-//     Config::$isProduction = false;
-//     Config::$isSanitized = true;
-//     Config::$is3ds = true;
-
-//     // Parameter Snap
-//     $params = [
-//         'transaction_details' => [
-//             'order_id' => 'BOOK-' . $booking->id,
-//             'gross_amount' => $booking->total_price,
-//         ],
-//         'customer_details' => [
-//             'name' => $booking->name,
-//             'email' => $booking->email,
-//         ],
-//     ];
-
-//     $snapToken = Snap::getSnapToken($params);
-//     return response()->json(['snap_token' => $snapToken]);
-// }
-
-// public function notificationHandler(Request $request)
-// {
-//     $notif = new Notification();
-
-//     $transaction = $notif->transaction_status;
-//     $orderId = $notif->order_id;
-
-//     $bookingId = explode('-', $orderId)[1];
-//     $booking = Booking::find($bookingId);
-
-//     if ($transaction == 'settlement') {
-//         $booking->update(['payment_status' => 'paid']);
-//     } elseif ($transaction == 'pending') {
-//         $booking->update(['payment_status' => 'pending']);
-//     } elseif ($transaction == 'deny' || $transaction == 'cancel' || $transaction == 'expire') {
-//         $booking->update(['payment_status' => 'failed']);
-//     }
-
-//     return response()->json(['status' => 'success']);
-// }
-
 
     /**
      * Hapus data booking.
