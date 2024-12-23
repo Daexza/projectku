@@ -84,6 +84,7 @@ class BookingController extends Controller
 
 public function getSnapToken($id)
 {
+
     $booking = Booking::findOrFail($id); // Pastikan Anda memiliki model Booking
     $snapToken = $this->getSnapToken($booking); // Assuming you have a method to get the snap token
 
@@ -132,6 +133,11 @@ require_once dirname(__FILE__) . '/midtrans-php-master/Midtrans.php';
         ]
     ];
 
+Config::$serverKey = env('MIDTRANS_SERVER_KEY');
+Config::$isProduction = false;
+Config::$isSanitized = true;
+Config::$is3ds = true;
+
 try {
         // Dapatkan Snap Token dari Midtrans
         $snapToken = \Midtrans\Snap::getSnapToken($params); // Menghasilkan Snap Token
@@ -142,6 +148,7 @@ try {
 
     // Kirim data snapToken dalam format JSON
     return response()->json(['snap_token' => $snapToken]);
+
 }
 
 
