@@ -51,38 +51,43 @@
 
 <script>
     // Fungsi untuk mendapatkan Snap Token dari server
-    function getSnapToken(bookingId) {
-        fetch(`/booking/${bookingId}/get-snap-token`) // Gantilah URL dengan route yang sesuai
-            .then(response => response.json()) // Mendapatkan respon dalam format JSON
-            .then(data => {
-                if (data.snap_token) {
-                    // Tampilkan Snap Popup jika Snap Token berhasil didapatkan
-                    window.snap.pay(data.snap_token, {
-                        onSuccess: function(result) {
-                            alert("Pembayaran berhasil!");
-                            console.log(result);
-                        },
-                        onPending: function(result) {
-                            alert("Menunggu pembayaran!");
-                            console.log(result);
-                        },
-                        onError: function(result) {
-                            alert("Pembayaran gagal!");
-                            console.log(result);
-                        },
-                        onClose: function() {
-                            alert('Anda menutup popup pembayaran.');
-                        }
-                    });
-                } else {
-                    alert('Snap Token gagal didapatkan!');
+   function getSnapToken(bookingId) {
+    fetch(`/booking/${bookingId}/get-snap-token`, { // Route yang sesuai
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}', // Tambahkan CSRF token
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.snap_token) {
+            window.snap.pay(data.snap_token, {
+                onSuccess: function(result) {
+                    alert("Pembayaran berhasil!");
+                    console.log(result);
+                },
+                onPending: function(result) {
+                    alert("Menunggu pembayaran!");
+                    console.log(result);
+                },
+                onError: function(result) {
+                    alert("Pembayaran gagal!");
+                    console.log(result);
+                },
+                onClose: function() {
+                    alert('Anda menutup popup pembayaran.');
                 }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Terjadi kesalahan saat mengambil Snap Token!');
             });
-    }
+        } else {
+            alert('Snap Token gagal didapatkan!');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Terjadi kesalahan saat mengambil Snap Token!');
+    });
+}
 
     // Event listener untuk tombol 'Pay Now'
     document.getElementById('pay-button').addEventListener('click', function () {
