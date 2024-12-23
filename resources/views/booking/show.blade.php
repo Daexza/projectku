@@ -8,8 +8,8 @@
         <div class="card-header fw-bold">Booking Details</div>
         <div class="card-body">
             <p><strong>Accommodation:</strong> {{ $booking->pencarian->name }}</p>
-            <p><strong>Room:</strong> {{ $booking->room->room_number }}</p>
-            <p><strong>Room Type:</strong> {{ ucfirst($booking->room->room_type) }}</p>
+                <p><strong>Room:</strong> {{ $booking->room->room_number }}</p>
+                <p><strong>Room Type:</strong> {{ ucfirst($booking->room->room_type) }}</p>
             <p><strong>Name:</strong> {{ $booking->name }}</p>
             <p><strong>Email:</strong> {{ $booking->email }}</p>
             <p><strong>Check In:</strong> {{ $booking->check_in }}</p>
@@ -20,7 +20,7 @@
         </div>
     </div>
 </div>
-  <script>
+  {{-- <script>
                 document.getElementById('pay-button').addEventListener('click', function () {
                     // Kirim data form ke server
                     fetch('{{ route('booking.store') }}', {
@@ -55,7 +55,7 @@
                         });
                     });
                 });
-            </script>
+            </script> --}}
 
 <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
 <script>

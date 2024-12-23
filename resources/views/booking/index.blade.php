@@ -71,10 +71,14 @@
             </form>
             <a href="{{ route('booking.show', $room->room_id) }}" class="btn btn-primary">Book Now</a>
 
-          
+
 
     @endif
 
+
+
+
+    
     <!-- Booking List Table -->
     <div class="card shadow">
         <div class="card-header fw-bold">Booking List</div>
