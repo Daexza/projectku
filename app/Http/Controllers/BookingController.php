@@ -82,7 +82,7 @@ class BookingController extends Controller
     return view('booking.show', compact('booking'));
 }
 
-// public function pay($id)
+// public function pay($id) 
 // {
 //     $booking = Booking::findOrFail($id);
 

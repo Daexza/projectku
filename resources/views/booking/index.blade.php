@@ -71,21 +71,16 @@
 
                 <button type="submit" class="btn btn-success">Book Now</button>
             </form>
-<<<<<<< HEAD
             <a href="{{ route('booking.show', $room->room_id) }}" class="btn btn-primary">Book Now</a>
 
 
 
-=======
-        </div>
-    </div>
->>>>>>> de3f4d08bd0081c0b8e3820cca756885ffdecef0
     @endif
 
 
 
 
-    
+
     <!-- Booking List Table -->
     <div class="card shadow">
         <div class="card-header fw-bold">Booking List</div>
@@ -129,6 +124,7 @@
 </div>
 
 <script>
+    
     // Hitung total harga saat tanggal check_in atau check_out berubah
     document.querySelectorAll('[name="check_in"], [name="check_out"]').forEach(input => {
         input.addEventListener('change', () => {
