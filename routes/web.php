@@ -6,9 +6,11 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PencarianController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\DetailbookingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MidtransController;
+use App\Http\Controllers\RoomController;
 
 
 
@@ -50,6 +52,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Route untuk dashboard admin
 Route::get('/admin/dashboard', [UserController::class, 'adminDashboard'])->name('dashboard.admin');
+Route::get('/admin', [AdminController::class, 'index']);
 
 // routes/web.php
 
@@ -60,14 +63,29 @@ Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.d
 Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
 
 // Route untuk daftar pengguna yang telah melakukan booking
-Route::get('/booking/user-list', [BookingController::class, 'userList'])->name('admin.booking.user_list');
+Route::get('/booking/user-list', [DetailbookingController::class, 'userList'])->name('admin.booking.user_list');
 
 // Route untuk detail booking
-Route::get('/booking/{id}', [BookingController::class, 'show'])->name('admin.booking.show');
+Route::get('/admin/booking/{id}', [DetailbookingController::class, 'detail'])
+    ->name('admin.booking.detail');
+Route::delete('/admin/booking/{id}/destroy', [DetailbookingController::class, 'destroy'])
+    ->name('admin.booking.destroy');
 
 
+// Room admin
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('room/room_list', [RoomController::class, 'index'])
+        ->name('room.room_list');
 
+    Route::get('room/{id}/edit', [RoomController::class, 'edit'])
+        ->name('room.edit');
 
+    Route::put('room/{id}', [RoomController::class, 'update'])
+        ->name('room.update');
+
+    Route::delete('room/{id}', [RoomController::class, 'destroy'])
+        ->name('room.destroy');
+});
 // Route untuk dashboard user
 Route::get('/user/dashboard', [UserController::class, 'userDashboard'])->name('pencarian.index');
 // Middleware untuk memeriksa apakah pengguna sudah login
