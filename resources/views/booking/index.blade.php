@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Booking Management</h1>
+    <h1 class="text-center mb-4">Booking </h1>
 
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
