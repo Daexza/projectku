@@ -1,9 +1,9 @@
 @extends('admin.admin')
 
 @section('content')
-<div class="container">
+<div class="w-100" style="padding: 0; margin: 0;"> <!-- Menghapus padding/margin -->
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-12">
             <div class="card">
                 <div class="card-header bg-primary text-white">
                     <h2 class="card-title">
@@ -11,37 +11,41 @@
                     </h2>
                 </div>
                 <div class="card-body">
+                    <!-- Statistik -->
                     <div class="row">
-                        <!-- Card Statistik -->
-                        <div class="col-md-3">
-                            <div class="card text-center bg-info text-white mb-3">
+                        <!-- Total Pengguna -->
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="card text-center bg-info text-white mb-4">
                                 <div class="card-body">
                                     <h5 class="card-title">Total Pengguna</h5>
                                     <h2>{{ $totalUsers ?? 0 }}</h2>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="col-md-3">
-                            <div class="card text-center bg-success text-white mb-3">
+
+                        <!-- Total Booking -->
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="card text-center bg-success text-white mb-4">
                                 <div class="card-body">
                                     <h5 class="card-title">Total Booking</h5>
                                     <h2>{{ $totalBookings ?? 0 }}</h2>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="col-md-3">
-                            <div class="card text-center bg-warning text-white mb-3">
+
+                        <!-- Booking Pending -->
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="card text-center bg-warning text-white mb-4">
                                 <div class="card-body">
                                     <h5 class="card-title">Booking Pending</h5>
                                     <h2>{{ $pendingBookings ?? 0 }}</h2>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="col-md-3">
-                            <div class="card text-center bg-danger text-white mb-3">
+
+                        <!-- Total Pendapatan -->
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="card text-center bg-danger text-white mb-4">
                                 <div class="card-body">
                                     <h5 class="card-title">Total Pendapatan</h5>
                                     <h2>Rp {{ number_format($totalRevenue ?? 0, 0, ',', '.') }}</h2>
@@ -50,12 +54,13 @@
                         </div>
                     </div>
 
-                    <!-- Grafik dan Tabel -->
+                    <!-- Grafik dan Booking Terbaru -->
                     <div class="row mt-4">
-                        <div class="col-md-6">
+                        <!-- Grafik Statistik Booking -->
+                        <div class="col-lg-6">
                             <div class="card">
-                                <div class="card-header">
-                                <h4 class="card-title">
+                                <div class="card-header bg-primary text-white">
+                                    <h4 class="card-title">
                                         <i class="fas fa-chart-line"></i> Statistik Booking
                                     </h4>
                                 </div>
@@ -64,47 +69,52 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="col-md-6">
+
+                        <!-- Booking Terbaru -->
+                        <div class="col-lg-6">
                             <div class="card">
-                                <div class="card-header">
+                                <div class="card-header bg-primary text-white">
                                     <h4 class="card-title">
                                         <i class="fas fa-list"></i> Booking Terbaru
                                     </h4>
                                 </div>
                                 <div class="card-body">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Nama</th>
-                                                <th>Kamar</th>
-                                                <th>Tanggal</th>
-                                                <th>Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($recentBookings ?? [] as $booking)
-                                            <tr>
-                                                <td>{{ $booking->user->name }}</td>
-                                                <td>{{ $booking->room->room_number }}</td>
-                                                <td>{{ $booking->created_at->format('d M Y') }}</td>
-                                                <td>
-                                                    <span class="badge 
-                                                        @if($booking->payment_status == 'success') bg-success 
-                                                        @elseif($booking->payment_status == 'pending') bg-warning 
-                                                        @else bg-danger 
-                                                        @endif">
-                                                        {{ ucfirst($booking->payment_status) }}
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                    @if(empty($recentBookings) || $recentBookings->isEmpty())
+                                        <p class="text-muted text-center">Tidak ada data booking terbaru.</p>
+                                    @else
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nama</th>
+                                                    <th>Kamar</th>
+                                                    <th>Tanggal</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($recentBookings as $booking)
+                                                    <tr>
+                                                        <td>{{ $booking->user->name ?? '-' }}</td>
+                                                        <td>{{ $booking->room->room_number ?? '-' }}</td>
+                                                        <td>{{ $booking->created_at->format('d M Y') }}</td>
+                                                        <td>
+                                                            <span class="badge 
+                                                                @if($booking->payment_status == 'success') bg-success 
+                                                                @elseif($booking->payment_status == 'pending') bg-warning 
+                                                                @else bg-danger 
+                                                                @endif">
+                                                                {{ ucfirst($booking->payment_status) }}
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    @endif
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> <!-- End Row -->
                 </div>
             </div>
         </div>
@@ -115,8 +125,8 @@
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Contoh Chart.js untuk statistik booking
+document.addEventListener('DOMContentLoaded', function () {
+    // Grafik Statistik Booking
     var ctx = document.getElementById('bookingChart').getContext('2d');
     var bookingChart = new Chart(ctx, {
         type: 'bar',
@@ -125,11 +135,11 @@ document.addEventListener('DOMContentLoaded', function() {
             datasets: [{
                 label: 'Jumlah Booking',
                 data: [
-                    {{ $bookingStats['Jan'] ?? 0 }}, 
-                    {{ $bookingStats['Feb'] ?? 0 }}, 
-                    {{ $bookingStats['Mar'] ?? 0 }}, 
-                    {{ $bookingStats['Apr'] ?? 0 }}, 
-                    {{ $bookingStats['Mei'] ?? 0 }}, 
+                    {{ $bookingStats['Jan'] ?? 0 }},
+                    {{ $bookingStats['Feb'] ?? 0 }},
+                    {{ $bookingStats['Mar'] ?? 0 }},
+                    {{ $bookingStats['Apr'] ?? 0 }},
+                    {{ $bookingStats['Mei'] ?? 0 }},
                     {{ $bookingStats['Jun'] ?? 0 }},
                     {{ $bookingStats['Jul'] ?? 0 }},
                     {{ $bookingStats['Agu'] ?? 0 }},
