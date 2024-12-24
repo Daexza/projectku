@@ -13,6 +13,7 @@
 
   <title>@yield('title', 'Dashboard')</title>
 
+  
 
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logos/favicon.png') }}" />
@@ -24,6 +25,8 @@
     integrity="sha512-vVn5lQuuV9FOG9kn7IqW5LfWIfBR/QMtwPmR2JweAAnWt8/XZuwEfjvYlyNht5R/Xap2o5+hj4rIwrfuBavZow=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -35,7 +38,7 @@
 
     <!-- Main Wrapper -->
     <div class="body-wrapper">
-      @include('layout.navbar') <!-- Navbar -->
+      @include('layout.header') <!-- Navbar -->
 
       <!-- Main Content -->
       <div class="container-fluid">
@@ -47,6 +50,7 @@
   <!-- External JS -->
   <script src="{{ asset('assets/js/custom.js') }}"></script>
   <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
+
 
 </body>
 

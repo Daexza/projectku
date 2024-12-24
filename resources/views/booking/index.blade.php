@@ -76,11 +76,13 @@
     @endif
 
     <!-- Booking List Table -->
-    <div class="card shadow">
-        <div class="card-header fw-bold">Booking List</div>
+    <div class="card shadow mb-4">
+        <div class="card-header bg-primary text-white fw-bold">
+            <i class="fas fa-bookmark me-2"></i>Booking List
+        </div>
         <div class="card-body">
-            <table class="table table-bordered table-hover">
-                <thead class="table-light">
+            <table class="table table-striped table-bordered table-hover" id="bookingTable">
+                <thead class="bg-info text-white">
                     <tr>
                         <th>#</th>
                         <th>Accommodation</th>
@@ -96,47 +98,112 @@
                     </tr>
                 </thead>
                 <tbody>
-    @forelse ($bookings as $booking)
-        <tr>
-            <td>{{ $loop->iteration }}</td>
-            <td>{{ $booking->pencarian->name ?? '-' }}</td>
-            <td>{{ $booking->room->room_number ?? '-' }}</td>
-            <td>{{ ucfirst($booking->room->room_type ?? '-') }}</td>
-            <td>{{ $booking->name }}</td>
-            <td>{{ $booking->email }}</td>
-            <td>{{ $booking->check_in }}</td>
-            <td>{{ $booking->check_out }}</td>
-            <td>Rp {{ number_format($booking->total_price, 0, ',', '.') }}</td>
-            <td>
-                @if($booking->payment_status === 'success')
-                    <span class="text-success fw-bold">Success</span>
-                @elseif($booking->payment_status === 'pending')
-                    <span class="text-warning fw-bold">Pending</span>
-                @else
-                    <span class="text-danger fw-bold">Failed</span>
-                @endif
-            </td>
-            <td>
-                @if($booking->payment_status === 'pending')
-                    <a href="{{ route('booking.show', $booking->id) }}" class="btn btn-success btn-sm">
-                        Pay Now
-                    </a>
-                @else
-                    <span class="text-muted">No Action</span>
-                @endif
-            </td>
-        </tr>
-    @empty
-        <tr>
-            <td colspan="11" class="text-center">No bookings found.</td>
-        </tr>
-    @endforelse
-</tbody>
-
+                    @forelse ($bookings as $booking)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $booking->pencarian->name ?? '-' }}</td>
+                            <td>{{ $booking->room->room_number ?? '-' }}</td>
+                            <td>{{ ucfirst($booking->room->room_type ?? '-') }}</td>
+                            <td>{{ $booking->name }}</td>
+                            <td>{{ $booking->email }}</td>
+                            <td>{{ $booking->check_in }}</td>
+                            <td>{{ $booking->check_out }}</td>
+                            <td>Rp {{ number_format($booking->total_price, 0, ',', '.') }}</td>
+                            <td>
+                                @if($booking->payment_status === 'success')
+                                    <span class="badge bg-success">Success</span>
+                                @elseif($booking->payment_status === 'pending')
+                                    <span class="badge bg-warning text-dark">Pending</span>
+                                @else
+                                    <span class="badge bg-danger">Failed</span>
+                                @endif
+                            </td>
+                            <td>
+                                @if($booking->payment_status === 'pending')
+                                    <a href="{{ route('booking.show', $booking->id) }}" class="btn btn-success btn-sm">
+                                        <i class="fas fa-credit-card me-2"></i>Pay Now
+                                    </a>
+                                @else
+                                    <span class="text-muted">No Action</span>
+                                @endif
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="11" class="text-center text-muted">No bookings found.</td>
+                        </tr>
+                    @endforelse
+                </tbody>
             </table>
         </div>
     </div>
-</div>
+
+    <!-- DataTable Initialization Script -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#bookingTable').DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "pagingType": "simple_numbers",
+                "language": {
+                    "search": "Search bookings:",
+                    "zeroRecords": "No matching records found"
+                }
+            });
+        });
+    </script>
+
+    <!-- Additional CSS for Styling -->
+
+    <style>
+        
+        .table th, .table td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #f9f9f9;
+        }
+
+        .table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .badge {
+            font-size: 0.9rem;
+            padding: 5px 10px;
+            border-radius: 12px;
+        }
+
+        .btn-sm {
+            font-size: 0.875rem;
+            padding: 6px 12px;
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .table td, .table th {
+            vertical-align: middle;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+
 
 <script>
     // Hitung total harga saat tanggal check_in atau check_out berubah

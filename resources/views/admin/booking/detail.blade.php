@@ -15,11 +15,11 @@
         <tr>
             <th>Status Pembayaran</th>
             <td>
-                <span class="badge 
-                    @if($booking->payment_status == 'success') bg-success 
-                    @elseif($booking->payment_status == 'pending') bg-warning 
-                    @elseif($booking->payment_status == 'failed') bg-danger 
-                    @else bg-secondary 
+                <span class="badge
+                    @if($booking->payment_status == 'success') bg-success
+                    @elseif($booking->payment_status == 'pending') bg-warning
+                    @elseif($booking->payment_status == 'failed') bg-danger
+                    @else bg-secondary
                     @endif">
                     {{ ucfirst($booking->payment_status) }}
                 </span>

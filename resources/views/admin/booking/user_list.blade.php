@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Daftar Pengguna yang Telah Melakukan Booking</h1>
+    <h1>Booking List</h1>
     <table class="table table-striped" id="bookingsTable">
         <thead>
             <tr>
@@ -26,11 +26,11 @@
                             $paymentStatuses = $userBookings->pluck('payment_status')->unique();
                         @endphp
                         @foreach($paymentStatuses as $status)
-                            <span class="badge 
-                                @if($status == 'success') bg-success 
-                                @elseif($status == 'pending') bg-warning 
-                                @elseif($status == 'failed') bg-danger 
-                                @else bg-secondary 
+                            <span class="badge
+                                @if($status == 'success') bg-success
+                                @elseif($status == 'pending') bg-warning
+                                @elseif($status == 'failed') bg-danger
+                                @else bg-secondary
                                 @endif">
                                 {{ ucfirst($status) }}
                             </span>
