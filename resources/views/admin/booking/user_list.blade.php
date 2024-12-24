@@ -9,7 +9,6 @@
                 <th>Nama</th>
                 <th>Email</th>
                 <th>Jumlah Booking</th>
-                <th>Status Pembayaran</th>
                 <th>Detail Booking</th>
                 <th>Aksi</th>
             </tr>
@@ -20,22 +19,7 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $bookings->where('email', $user->email)->count() }}</td>
-                    <td>
-                        @php
-                            $userBookings = $bookings->where('email', $user->email);
-                            $paymentStatuses = $userBookings->pluck('payment_status')->unique();
-                        @endphp
-                        @foreach($paymentStatuses as $status)
-                            <span class="badge
-                                @if($status == 'success') bg-success
-                                @elseif($status == 'pending') bg-warning
-                                @elseif($status == 'failed') bg-danger
-                                @else bg-secondary
-                                @endif">
-                                {{ ucfirst($status) }}
-                            </span>
-                        @endforeach
-                    </td>
+                    
                     <td>
                         @foreach($bookings->where('email', $user->email) as $booking)
                             <a href="{{ route('admin.booking.detail', $booking->id) }}" class="btn btn-info btn-sm">Lihat Detail</a>

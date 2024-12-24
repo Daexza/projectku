@@ -10,7 +10,6 @@
                 <th>Email</th>
                 <th>Phone Number</th>
                 <th>Address</th>
-                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -20,15 +19,7 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->phone_number }}</td>
                     <td>{{ $user->address }}</td>
-                    <td>
-                        <a href="#" class="btn btn-info">View</a>
-                        <a href="#" class="btn btn-warning">Edit</a>
-                        <form action="#" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    </td>
+                
                 </tr>
             @endforeach
         </tbody>

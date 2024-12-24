@@ -93,8 +93,6 @@
                         <th>Check In</th>
                         <th>Check Out</th>
                         <th>Total Price</th>
-                        <th>Payment Status</th>
-                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -109,24 +107,6 @@
                             <td>{{ $booking->check_in }}</td>
                             <td>{{ $booking->check_out }}</td>
                             <td>Rp {{ number_format($booking->total_price, 0, ',', '.') }}</td>
-                            <td>
-                                @if($booking->payment_status === 'success')
-                                    <span class="badge bg-success">Success</span>
-                                @elseif($booking->payment_status === 'pending')
-                                    <span class="badge bg-warning text-dark">Pending</span>
-                                @else
-                                    <span class="badge bg-danger">Failed</span>
-                                @endif
-                            </td>
-                            <td>
-                                @if($booking->payment_status === 'pending')
-                                    <a href="{{ route('booking.show', $booking->id) }}" class="btn btn-success btn-sm">
-                                        <i class="fas fa-credit-card me-2"></i>Pay Now
-                                    </a>
-                                @else
-                                    <span class="text-muted">No Action</span>
-                                @endif
-                            </td>
                         </tr>
                     @empty
                         <tr>
@@ -159,7 +139,7 @@
     <!-- Additional CSS for Styling -->
 
     <style>
-        
+
         .table th, .table td {
             padding: 12px;
             text-align: center;

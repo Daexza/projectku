@@ -1,27 +1,48 @@
 @extends('layout.home')
 
 @section('content')
-<div class="container mt-5">
-    <h1 class="text-center mb-4">Detail Booking</h1>
-
-    <div class="card shadow">
-        <div class="card-header fw-bold">Booking Details</div>
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card shadow-lg border-0 rounded-3" style="width: 100%; max-width: 600px;">
+        <div class="card-header bg-primary text-white fw-bold text-center" style="font-size: 1.5rem;">
+            Details Payment
+        </div>
         <div class="card-body">
-            <p><strong>Accommodation:</strong> {{ $booking->pencarian->name }}</p>
+            <div class="mb-3">
+                <p><strong>Accommodation:</strong> {{ $booking->pencarian->name }}</p>
                 <p><strong>Room:</strong> {{ $booking->room->room_number }}</p>
                 <p><strong>Room Type:</strong> {{ ucfirst($booking->room->room_type) }}</p>
-            <p><strong>Name:</strong> {{ $booking->name }}</p>
-            <p><strong>Email:</strong> {{ $booking->email }}</p>
-            <p><strong>Check In:</strong> {{ $booking->check_in }}</p>
-            <p><strong>Check Out:</strong> {{ $booking->check_out }}</p>
-            <p><strong>Total Price:</strong> Rp {{ number_format($booking->total_price, 0, ',', '.') }}</p>
+            </div>
+
+            <div class="mb-3">
+                <p><strong>Name:</strong> {{ $booking->name }}</p>
+                <p><strong>Email:</strong> {{ $booking->email }}</p>
+            </div>
+
+            <div class="mb-3">
+                <p><strong>Check In:</strong> {{ $booking->check_in }}</p>
+                <p><strong>Check Out:</strong> {{ $booking->check_out }}</p>
+            </div>
+
+            <div class="mb-3">
+                <p><strong>Total Price:</strong>
+                    <span style="color: #388e3c; font-weight: bold;">Rp {{ number_format($booking->total_price, 0, ',', '.') }}</span>
+                </p>
+            </div>
+
+            <hr>
 
             <!-- Tombol Pay -->
             <input type="hidden" id="booking-id" value="{{ $booking->id }}">
-            <button id="pay-button" class="btn btn-success">Pay Now</button>
+            <div class="text-center mt-3">
+                <button id="pay-button" class="btn btn-success px-4 py-2" style="font-size: 1.1rem;">
+                    Pay Now
+                </button>
+            </div>
         </div>
     </div>
 </div>
+
+
 
 
 <script>

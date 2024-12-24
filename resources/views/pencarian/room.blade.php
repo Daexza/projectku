@@ -8,7 +8,7 @@
 
         <!-- Tampilkan gambar utama -->
         <div class="text-center mb-4">
-            <img src="{{ $pencarian->image_url }}" alt="{{ $pencarian->name }}" class="img-fluid" style="height: 400px; object-fit: cover; border-radius: 12px;">
+            <img src="{{ $pencarian->image_url }}" alt="{{ $pencarian->name }}" class="img-fluid" style="height: 400px; object-fit: cover;">
         </div>
 
         <!-- Loop berdasarkan tipe kamar -->
@@ -22,12 +22,12 @@
 
             @if($filteredRooms->isNotEmpty())
                 <!-- Judul Tipe Kamar -->
-                <h3 class="mt-4 text-capitalize text-center" style="font-size: 1.8rem; font-weight: 600;">{{ ucfirst($type) }} Rooms</h3>
-                <div class="row row-cols-1 row-cols-md-3 row-cols-sm-2 g-4 justify-content-center">
+                <h3 class="mt-4 text-capitalize">{{ ucfirst($type) }} Rooms</h3>
+                <div class="row">
                     @foreach($filteredRooms as $room)
-                        <div class="col">
-                            <div class="card shadow-lg border-light" style="border-radius: 12px; overflow: hidden; transition: transform 0.3s ease;">
-                                <!-- Gambar Kamar -->
+                        <div class="col-md-4 mb-3">
+                            <div class="card shadow-sm">
+                                    <!-- Gambar Kamar -->
                                 <img src="{{ $room->image_url }}" alt="Room {{ $room->room_number }}" class="card-img-top" style="height: 250px; object-fit: cover; transition: transform 0.3s ease;">
                                 <div class="card-body">
                                     <h5 class="card-title text-center" style="font-weight: 700;">Room {{ $room->room_number }}</h5>

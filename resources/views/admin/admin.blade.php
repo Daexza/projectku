@@ -3,171 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    <style>
-        body {
-            background-color: #e3f2fd;
-        }
+    <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 
-        .left-sidebar {
-            background-color: #e3f2fd;
-            width: 250px;
-            height: 100vh;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            color: #1e88e5;
-        }
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-        .brand-logo {
-            background-color: #90caf9;
-            color: #0d47a1;
-            padding: 20px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-align: center;
-        }
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
-        .brand-logo span:first-child {
-            color: #0d47a1;
-        }
-
-        .brand-logo span:last-child {
-            color: white;
-            margin-left: 5px;
-        }
-
-        .sidebar-nav {
-            padding-top: 10px;
-        }
-
-        .sidebar-item {
-            list-style: none;
-            padding: 10px 20px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .sidebar-item a {
-            color: #0d47a1;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            border-radius: 8px;
-            padding: 8px 15px;
-            transition: all 0.3s ease;
-        }
-
-        .sidebar-item a i {
-            font-size: 1.2rem;
-            margin-right: 15px;
-        }
-
-        .sidebar-item a:hover {
-            background-color: #90caf9;
-            color: #fff;
-        }
-
-        .nav-small-cap {
-            background: linear-gradient(to right, #64b5f6, #42a5f5);
-            padding: 8px 16px;
-            border-radius: 12px;
-            color: #0d47a1;
-            font-size: 1.1rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
-
-        .navbar {
-            background-color: #ffffff;
-            border-bottom: 2px solid #42a5f5;
-            color: #1e88e5;
-            font-weight: bold;
-        }
-
-        .navbar-brand {
-            color: #1e88e5;
-        }
-
-        .navbar-brand:hover {
-            color: #0d47a1;
-        }
-
-        .content-wrapper {
-            margin-left: 250px;
-            padding: 20px;
-        }
-    </style>
+    @stack('styles')
 </head>
 <body>
-    <div class="d-flex">
-        <!-- Sidebar -->
-        <aside class="left-sidebar">
-            <div class="brand-logo">
-                <span>BE</span><span>Explore</span>
-            </div>
-            <nav class="sidebar-nav">
-                <ul id="sidebarnav">
-                    <li class="nav-small-cap">Home</li>
-                    <li class="sidebar-item">
-                        <a href="{{ route('admin.dashboard') }}" class="d-flex align-items-center">
-                            <i class="fas fa-tachometer-alt"></i>
-                            <span>Dashboard</span>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ route('admin.dashboard') }}">
+                <i class="fas fa-tachometer-alt"></i> Admin Dashboard
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.dashboard') }}">
+                            <i class="fas fa-home"></i> Beranda
                         </a>
                     </li>
-                    <li class="sidebar-item">
-                        <a href="{{ route('admin.users') }}" class="d-flex align-items-center">
-                            <i class="fas fa-user"></i>
-                            <span>Pengguna</span>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-users"></i> Manajemen
                         </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="{{ route('admin.users') }}">
+                                    <i class="fas fa-user"></i> Pengguna
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{{ route('admin.room.room_list') }}">
+                                    <i class="fas fa-bed"></i> Kamar
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{{ route('admin.booking.user_list') }}">
+                                    <i class="fas fa-book"></i> Booking
+                                </a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="sidebar-item">
-                        <a href="{{ route('admin.room.room_list') }}" class="d-flex align-items-center">
-                            <i class="fas fa-bed"></i>
-                            <span>Kamar</span>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-chart-bar"></i> Laporan
                         </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="{{ route('admin.booking.user_list') }}" class="d-flex align-items-center">
-                            <i class="fas fa-book"></i>
-                            <span>Booking</span>
-                        </a>
-                    </li>
-                    <li class="nav-small-cap">Auth</li>
-                    <li class="sidebar-item">
-                        <a href="{{ route('logout') }}" class="d-flex align-items-center"
-                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <i class="fas fa-sign-out-alt"></i>
-                            <span>Logout</span>
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-money-bill-wave"></i> Pendapatan
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-calendar-check"></i> Booking
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
-            </nav>
-        </aside>
 
-        <!-- Main Content -->
-        <div class="content-wrapper">
-            <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Admin Dashboard</a>
-                </div>
-            </nav>
-
-            <div>
-                @yield('content')
+                <!-- Navbar Kanan -->
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                            <li>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();">
+                                    <i class="fas fa-sign-out-alt"></i> Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        @yield('content')
     </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 bg-light text-center">
+        <div class="container">
+            <span class="text-muted">
+                &copy; {{ date('Y') }} Admin Dashboard. All rights reserved.
+            </span>
+        </div>
+    </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @stack('scripts')
 </body>
 </html>

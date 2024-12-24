@@ -15,13 +15,12 @@
       <nav class="sidebar-nav scroll-sidebar" data-simplebar style="padding-top: 10px;">
         <ul id="sidebarnav" class="list-unstyled">
           <!-- Home Section -->
-          <li class="nav-small-cap px-3 text-muted fw-bold mt-4 mb-2" style="background: linear-gradient(to right, #64b5f6, #42a5f5); padding: 8px 16px; border-radius: 12px; color: #0d47a1; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease;"
+          <li class="nav-small-cap px-3 text-muted fw-bold mt-4 mb-2" style="background: linear-gradient(to right, #64b5f6, #42a5f5); padding: 8px 16px; border-radius: 12px; color: white; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease;"
     onmouseover="this.style.background='linear-gradient(to right, #42a5f5, #64b5f6)'; this.style.cursor='pointer';"
     onmouseout="this.style.background='linear-gradient(to right, #64b5f6, #42a5f5)';">
   Home
 </li>
-
-
+          </li>
 
                     <li class="sidebar-item">
             <a class="sidebar-link d-flex align-items-center px-3 py-3" href="{{ route('dashboard.index') }}" style="color: #0d47a1; text-decoration: none; border-radius: 8px; transition: all 0.3s;">
@@ -50,8 +49,8 @@
           <li class="nav-small-cap px-3 text-muted fw-bold mt-4 mb-2" style="background: linear-gradient(to right, #64b5f6, #42a5f5); padding: 8px 16px; border-radius: 12px; color: white; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease;"
           onmouseover="this.style.background='linear-gradient(to right, #42a5f5, #64b5f6)'; this.style.cursor='pointer';"
           onmouseout="this.style.background='linear-gradient(to right, #64b5f6, #42a5f5)';">
-           Auth
-          </li>          <li class="sidebar-item">
+        Auth
+      </li>          <li class="sidebar-item">
             <a class="sidebar-link d-flex align-items-center px-3 py-3" href="{{ route('login') }}" style="color: #0d47a1; text-decoration: none; border-radius: 8px; transition: all 0.3s;">
               <i class="fas fa-sign-in-alt me-3" style="font-size: 1.2rem; color: #1e88e5;"></i>
               <span style="font-size: 1rem; font-weight: 600;">Login</span>

@@ -5,11 +5,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-header bg-primary text-white">
-                    <h2 class="card-title">
-                        <i class="fas fa-tachometer-alt"></i> Dashboard Admin
-                    </h2>
-                </div>
+
                 <div class="card-body">
                     <!-- Statistik -->
                     <div class="row">
@@ -98,10 +94,10 @@
                                                         <td>{{ $booking->room->room_number ?? '-' }}</td>
                                                         <td>{{ $booking->created_at->format('d M Y') }}</td>
                                                         <td>
-                                                            <span class="badge 
-                                                                @if($booking->payment_status == 'success') bg-success 
-                                                                @elseif($booking->payment_status == 'pending') bg-warning 
-                                                                @else bg-danger 
+                                                            <span class="badge
+                                                                @if($booking->payment_status == 'success') bg-success
+                                                                @elseif($booking->payment_status == 'pending') bg-warning
+                                                                @else bg-danger
                                                                 @endif">
                                                                 {{ ucfirst($booking->payment_status) }}
                                                             </span>
