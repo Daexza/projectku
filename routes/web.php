@@ -53,6 +53,9 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 // Route untuk dashboard admin
 Route::get('/admin/dashboard', [UserController::class, 'adminDashboard'])->name('dashboard.admin');
 Route::get('/admin', [AdminController::class, 'index']);
+Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users.index');
+Route::get('/user/dashboard', [UserController::class, 'userDashboard'])->name('user.dashboard');
+
 
 // routes/web.php
 
