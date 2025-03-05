@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+<<<<<<< HEAD
 use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions; // Alternatif
@@ -28,3 +29,17 @@ class UserTest extends TestCase
         $this->assertDatabaseHas('users', ['email' => 'janedoe@example.com']);
     }
 }
+=======
+use PHPUnit\Framework\TestCase;
+
+class UserTest extends TestCase
+{
+    /**
+     * A basic unit test example.
+     */
+    public function test_example(): void
+    {
+        $this->assertTrue(true);
+    }
+}
+>>>>>>> 1c4fef1f940b412d7cc406504efb34a701f473d1
